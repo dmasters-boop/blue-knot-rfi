@@ -21,7 +21,7 @@ export default function ActCard({ number, title, tagline, description, href }: A
       </span>
 
       <div className="mb-5">
-        <span className="eyebrow-pill">Act {number}</span>
+        <span className="eyebrow-pill">{number}</span>
       </div>
 
       <h3 className="font-display text-2xl font-black text-[#0A0A0A] mb-2 leading-tight">{title}</h3>
@@ -29,7 +29,7 @@ export default function ActCard({ number, title, tagline, description, href }: A
       <p className="text-base text-[#3D3D3D] leading-relaxed flex-1">{description}</p>
 
       <div className="mt-8 flex items-center gap-2 text-sm font-bold text-black/30 group-hover:text-[var(--brand-primary)] transition-colors duration-200">
-        Enter this act
+        Explore
         <svg width="14" height="14" viewBox="0 0 12 12" fill="none" aria-hidden className="group-hover:translate-x-1.5 transition-transform duration-200">
           <path d="M2.5 6h7M6.5 2.5L10 6l-3.5 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>

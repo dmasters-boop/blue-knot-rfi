@@ -8,8 +8,8 @@ import { ACCOUNT } from "@/data/account";
 const navLinks = [
   { href: "/",               label: "Overview" },
   { href: "/act-1",          label: ACCOUNT.acts[0].title },
-  { href: "/act-2",          label: "Data Foundation" },
-  { href: "/act-3",          label: "Agentic Enterprise" },
+  { href: "/act-2",          label: ACCOUNT.acts[1].title },
+  { href: "/act-3",          label: ACCOUNT.acts[2].title },
   { href: "/architecture",   label: "Architecture" },
   { href: "/strategy",       label: "Strategy" },
   { href: "/agents",         label: "Agents" },

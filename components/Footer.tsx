@@ -12,9 +12,9 @@ export default function Footer() {
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-1">
-          <Link href="/act-1"         className="px-4 py-2 rounded-full text-sm text-white/55 hover:text-white hover:bg-white/10 transition-all font-semibold">Act 1</Link>
-          <Link href="/act-2"         className="px-4 py-2 rounded-full text-sm text-white/55 hover:text-white hover:bg-white/10 transition-all font-semibold">Data</Link>
-          <Link href="/act-3"         className="px-4 py-2 rounded-full text-sm text-white/55 hover:text-white hover:bg-white/10 transition-all font-semibold">Agentic</Link>
+          <Link href="/act-1"         className="px-4 py-2 rounded-full text-sm text-white/55 hover:text-white hover:bg-white/10 transition-all font-semibold">The Problem</Link>
+          <Link href="/act-2"         className="px-4 py-2 rounded-full text-sm text-white/55 hover:text-white hover:bg-white/10 transition-all font-semibold">The Foundation</Link>
+          <Link href="/act-3"         className="px-4 py-2 rounded-full text-sm text-white/55 hover:text-white hover:bg-white/10 transition-all font-semibold">The Future</Link>
           <Link href="/architecture"  className="px-4 py-2 rounded-full text-sm text-white/55 hover:text-white hover:bg-white/10 transition-all font-semibold">Architecture</Link>
           <Link href="/strategy"      className="px-4 py-2 rounded-full text-sm text-white/55 hover:text-white hover:bg-white/10 transition-all font-semibold">Strategy</Link>
           <Link href="/agents"        className="px-4 py-2 rounded-full text-sm text-white/55 hover:text-white hover:bg-white/10 transition-all font-semibold">Agents</Link>

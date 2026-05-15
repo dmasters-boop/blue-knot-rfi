@@ -103,7 +103,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Three Acts ── */}
+      {/* ── Three Chapters ── */}
       <section className="bg-[var(--brand-light)]" id="acts">
         <div className="max-w-6xl mx-auto px-6 py-24">
           <FadeIn>
@@ -112,7 +112,7 @@ export default function HomePage() {
                 <span className="eyebrow-pill-outline">The Transformation Story</span>
               </div>
               <h2 className="font-display text-4xl sm:text-5xl font-black text-[#0A0A0A] mb-4 tracking-tight leading-[0.95]">
-                Three acts. One outcome.
+                Three chapters. One outcome.
               </h2>
               <p className="text-lg text-[#3D3D3D] max-w-xl leading-relaxed">
                 A transformation story — from where {ACCOUNT.company} is today to where it could operate tomorrow.

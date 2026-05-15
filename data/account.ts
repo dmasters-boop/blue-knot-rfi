@@ -118,24 +118,25 @@ export const ACCOUNT = {
     ],
   },
 
-  // ── Three acts (home page nav cards) ─────────────────────────────────────
+  // ── Three chapters (home page nav cards) ─────────────────────────────────
+  // number: short label shown as eyebrow pill — e.g. "The Problem", "The Foundation", "The Future"
   acts: [
     {
-      number: "01",
+      number: "The Problem",
       href: "/act-1",
-      title: "TODO: Act 1 Title",
+      title: "TODO: Chapter 1 Title",
       tagline: "TODO: Short tagline.",
-      description: "TODO: One sentence describing what this act covers and why it matters.",
+      description: "TODO: One sentence describing what this chapter covers and why it matters.",
     },
     {
-      number: "02",
+      number: "The Foundation",
       href: "/act-2",
       title: "The Data Foundation",
       tagline: "The intelligence layer everything else depends on.",
       description: "Before AI can act, it needs a single version of the truth. Data Cloud unifies every signal into one continuously-updated record.",
     },
     {
-      number: "03",
+      number: "The Future",
       href: "/act-3",
       title: "The Agentic Enterprise",
       tagline: "AI that doesn't just inform — it executes.",
@@ -145,11 +146,11 @@ export const ACCOUNT = {
 
   // ── Act 1: Narrative + before/after + metrics + enablers ─────────────────
   act1: {
-    meta: { title: "Act 1 · Executive Briefing" },
+    meta: { title: "TODO: Act 1 Title · Executive Briefing" },
     hero: {
-      eyebrow: "Act 01",
-      headline: "TODO: Act 1\nPage Headline",
-      subheadline: "TODO: Subheadline for the act 1 detail page.",
+      eyebrow: "The Problem",
+      headline: "TODO: Chapter 1\nPage Headline",
+      subheadline: "TODO: Subheadline for the chapter 1 detail page.",
     },
     narrative: [
       { title: "TODO: Narrative 1", body: "TODO: Body 1" },
@@ -301,9 +302,9 @@ export const ACCOUNT = {
 
   // ── Act 3: Agentic Enterprise ──────────────────────────────────────────────
   act3: {
-    meta: { title: "Act 3: The Agentic Enterprise · Executive Briefing" },
+    meta: { title: "The Agentic Enterprise · Executive Briefing" },
     hero: {
-      eyebrow: "Act 03",
+      eyebrow: "The Future",
       headline: "The Agentic\nEnterprise",
       subheadline: "TODO: From visibility to velocity — what autonomous execution looks like for this account.",
     },
