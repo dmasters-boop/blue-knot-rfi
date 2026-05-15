@@ -76,6 +76,13 @@ export const ACCOUNT = {
     primaryDark:  "#0052CC",
     bg:           "#0A0A0A",
     light:        "#F5F5F5",
+    // Font pairing — pick one based on brand personality:
+    // "editorial"  — Playfair Display + Inter    (luxury, premium, insurance, pharma)
+    // "refined"    — Cormorant Garamond + DM Sans (life sciences, financial services, heritage brands)
+    // "modern"     — DM Sans + DM Sans            (SaaS, consumer tech, retail, approachable enterprise)
+    // "technical"  — Space Grotesk + Inter        (engineering-led, platform companies, cloud)
+    // "bold"       — Sora + Inter                 (bold enterprise, energy, manufacturing, field operations)
+    fonts: "editorial" as "editorial" | "refined" | "modern" | "technical" | "bold",
   },
 
   // ── Hero ───────────────────────────────────────────────────────────────────

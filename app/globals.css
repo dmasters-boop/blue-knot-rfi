@@ -40,7 +40,7 @@
 .hero-ctas     { animation: hero-in 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.46s both; }
 
 /* ── Font utilities ──────────────────────────────────────────────────────── */
-.font-display { font-family: var(--font-playfair), serif; }
+.font-display { font-family: var(--font-display), serif; }
 
 /* ── Eyebrow pill — brand primary (on dark bg) ───────────────────────────── */
 .eyebrow-pill {
