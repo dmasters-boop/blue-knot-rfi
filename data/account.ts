@@ -97,6 +97,22 @@ export const ACCOUNT = {
     // "split"      — text left, stat/metric block right
     // "minimal"    — compact headline + CTA, no decorative elements
     heroLayout: "centered" as "centered" | "split" | "minimal",
+
+    // Optional hero background image — full URL or /public path (e.g. "/images/hero.jpg")
+    // If set, renders as full-bleed behind the hero with a brand-tinted dark overlay
+    // If omitted, falls back to the default gradient treatment
+    heroImage: undefined as string | undefined,
+
+    // Section header alignment — eyebrow + heading + subtext blocks across all pages
+    // "left"    — left-aligned (default for most themes — feels editorial and grounded)
+    // "center"  — centered (works well for bold/dark themes with short punchy headings)
+    headerAlign: "left" as "left" | "center",
+
+    // Card grid density — controls gap and padding across card grids
+    // "compact"   — tighter gaps and padding (good for data-heavy pages, corporate feel)
+    // "default"   — balanced (works everywhere)
+    // "spacious"  — more breathing room (editorial, premium, light themes)
+    density: "default" as "compact" | "default" | "spacious",
   },
 
   // ── Hero ───────────────────────────────────────────────────────────────────

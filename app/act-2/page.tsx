@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { ACCOUNT } from "@/data/account";
 import { THEMES } from "@/lib/themes";
 import Nav from "@/components/Nav";
+import SectionHeader from "@/components/SectionHeader";
 import Hero from "@/components/Hero";
 import QuoteBlock from "@/components/QuoteBlock";
 import FadeIn from "@/components/FadeIn";
@@ -21,10 +22,10 @@ export default function Data360Page() {
       {/* Narrative */}
       <section style={{ background: "var(--brand-section-alt)" }}>
         <div className="max-w-6xl mx-auto px-6 py-20">
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="grid sm:grid-cols-2" style={{ gap: "var(--brand-density-gap)" }}>
             {narrative.map((block, i) => (
               <FadeIn key={block.title} delay={i * 100}>
-                <div className="rounded-[var(--brand-radius)] border p-8 h-full transition-shadow hover:shadow-md" style={{ background: "var(--brand-card-bg)", borderColor: "var(--brand-card-border)", boxShadow: "var(--brand-card-shadow)" }}>
+                <div className="rounded-[var(--brand-radius)] border h-full transition-shadow hover:shadow-md" style={{ background: "var(--brand-card-bg)", borderColor: "var(--brand-card-border)", boxShadow: "var(--brand-card-shadow)", padding: "var(--brand-density-pad)" }}>
                   <h3 className="font-display text-xl font-black mb-3 leading-tight" style={{ color: "var(--brand-text-heading)" }}>{block.title}</h3>
                   <p className="text-base leading-relaxed" style={{ color: "var(--brand-text-muted)" }}>{block.body}</p>
                 </div>
@@ -38,20 +39,12 @@ export default function Data360Page() {
       <section className="border-t" style={{ background: "var(--brand-bg)", borderColor: "var(--brand-surface-border)" }}>
         <div className="max-w-6xl mx-auto px-6 py-20">
           <FadeIn>
-            <div className="mb-12">
-              <div className="mb-5"><span className="eyebrow-pill">Data Flows</span></div>
-              <h2 className="font-display text-4xl sm:text-5xl font-black tracking-tight leading-[0.95] mb-4 max-w-2xl" style={{ color: "var(--brand-text-heading)" }}>
-                Every source. One truth.
-              </h2>
-              <p className="text-lg max-w-xl leading-relaxed" style={{ color: "var(--brand-text-muted)" }}>
-                Data 360 connects every commercial signal into a unified customer record — the foundation everything else reads from.
-              </p>
-            </div>
+            <SectionHeader eyebrow="Data Flows" headline="Every source. One truth." subtext="Data 360 connects every commercial signal into a unified customer record — the foundation everything else reads from." maxWidthClass="max-w-xl" />
           </FadeIn>
           <div className="space-y-3">
             {dataFlows.map((flow, i) => (
               <FadeIn key={flow.source} delay={i * 60}>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 rounded-[var(--brand-radius)] border p-6 transition-all hover:border-[var(--brand-primary)]/20 hover:shadow-sm" style={{ background: "var(--brand-card-bg)", borderColor: "var(--brand-card-border)" }}>
+                <div className="grid grid-cols-1 sm:grid-cols-3 rounded-[var(--brand-radius)] border transition-all hover:border-[var(--brand-primary)]/20 hover:shadow-sm" style={{ background: "var(--brand-card-bg)", borderColor: "var(--brand-card-border)", gap: "var(--brand-density-gap)", padding: "var(--brand-density-pad)" }}>
                   <div>
                     <p className="text-[10px] font-bold tracking-widest uppercase mb-1" style={{ color: "var(--brand-primary)", opacity: 0.7 }}>Source</p>
                     <p className="text-base font-bold" style={{ color: "var(--brand-text-heading)" }}>{flow.source}</p>

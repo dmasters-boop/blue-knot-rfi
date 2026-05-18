@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ACCOUNT } from "@/data/account";
 
 interface HeroProps {
@@ -14,14 +15,34 @@ interface HeroProps {
 export default function Hero({ eyebrow, headline, subheadline, ctaPrimary, ctaSecondary, variant = "act", stats }: HeroProps) {
   const isHome = variant === "home";
   const heroLayout = ACCOUNT.brand.heroLayout ?? "centered";
+  const heroImage = ACCOUNT.brand.heroImage;
 
   // Act pages always use centered; only home page respects heroLayout
   const layout = isHome ? heroLayout : "centered";
 
   const bgDecoration = isHome ? (
     <>
-      <div className="absolute inset-0 bg-gradient-to-br from-[var(--brand-primary)]/20 via-[var(--brand-bg)] to-[var(--brand-bg)]" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-bg)] via-[var(--brand-bg)]/60 to-transparent" />
+      {heroImage ? (
+        <>
+          <Image
+            src={heroImage}
+            alt=""
+            fill
+            className="object-cover object-center"
+            priority
+            aria-hidden
+          />
+          {/* Dark overlay + brand tint */}
+          <div className="absolute inset-0 bg-[var(--brand-bg)]/70" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[var(--brand-primary)]/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-bg)] via-[var(--brand-bg)]/40 to-transparent" />
+        </>
+      ) : (
+        <>
+          <div className="absolute inset-0 bg-gradient-to-br from-[var(--brand-primary)]/20 via-[var(--brand-bg)] to-[var(--brand-bg)]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-bg)] via-[var(--brand-bg)]/60 to-transparent" />
+        </>
+      )}
     </>
   ) : (
     <>

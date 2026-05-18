@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { ACCOUNT } from "@/data/account";
 import { THEMES } from "@/lib/themes";
 import Nav from "@/components/Nav";
+import SectionHeader from "@/components/SectionHeader";
 import Hero from "@/components/Hero";
 import QuoteBlock from "@/components/QuoteBlock";
 import CockpitFlow, { type CockpitFlowStep } from "@/components/CockpitFlow";
@@ -23,10 +24,10 @@ export default function Act1Page() {
       {/* ── Narrative cards ── */}
       <section style={{ background: "var(--brand-section-alt)" }}>
         <div className="max-w-6xl mx-auto px-6 py-20">
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="grid sm:grid-cols-2" style={{ gap: "var(--brand-density-gap)" }}>
             {narrative.map((block, i) => (
               <FadeIn key={block.title} delay={i * 100}>
-                <div className="rounded-[var(--brand-radius)] border p-8 h-full transition-shadow hover:shadow-md" style={{ background: "var(--brand-card-bg)", borderColor: "var(--brand-card-border)", boxShadow: "var(--brand-card-shadow)" }}>
+                <div className="rounded-[var(--brand-radius)] border h-full transition-shadow hover:shadow-md" style={{ background: "var(--brand-card-bg)", borderColor: "var(--brand-card-border)", boxShadow: "var(--brand-card-shadow)", padding: "var(--brand-density-pad)" }}>
                   <h3 className="font-display text-xl font-black mb-3 leading-tight" style={{ color: "var(--brand-text-heading)" }}>{block.title}</h3>
                   <p className="text-base leading-relaxed" style={{ color: "var(--brand-text-muted)" }}>{block.body}</p>
                 </div>
@@ -40,14 +41,7 @@ export default function Act1Page() {
       <section className="border-t" style={{ background: "var(--brand-bg)", borderColor: "var(--brand-surface-border)" }}>
         <div className="max-w-6xl mx-auto px-6 py-20">
           <FadeIn>
-            <div className="mb-12">
-              <div className="mb-5">
-                <span className="eyebrow-pill">{beforeAfter.eyebrow}</span>
-              </div>
-              <h2 className="font-display text-4xl sm:text-5xl font-black tracking-tight leading-[0.95] mb-4 max-w-2xl" style={{ color: "var(--brand-text-heading)" }}>
-                {beforeAfter.title}
-              </h2>
-            </div>
+            <SectionHeader eyebrow={beforeAfter.eyebrow} headline={beforeAfter.title} />
           </FadeIn>
 
           <div className="rounded-[var(--brand-radius)] border overflow-hidden" style={{ borderColor: "var(--brand-surface-border)" }}>
@@ -79,17 +73,7 @@ export default function Act1Page() {
       <section className="border-t" style={{ background: "var(--brand-section-alt)", borderColor: "var(--brand-surface-border)" }}>
         <div className="max-w-6xl mx-auto px-6 py-20">
           <FadeIn>
-            <div className="mb-12">
-              <div className="mb-5">
-                <span className="eyebrow-pill-outline">The Solution in Action</span>
-              </div>
-              <h2 className="font-display text-4xl sm:text-5xl font-black tracking-tight leading-[0.95] mb-4 max-w-2xl" style={{ color: "var(--brand-text-heading)" }}>
-                {ACCOUNT.acts[0].title}
-              </h2>
-              <p className="text-lg max-w-2xl leading-relaxed" style={{ color: "var(--brand-text-muted)" }}>
-                {ACCOUNT.acts[0].description}
-              </p>
-            </div>
+            <SectionHeader eyebrow="The Solution in Action" eyebrowVariant="outline" headline={ACCOUNT.acts[0].title} subtext={ACCOUNT.acts[0].description} maxWidthClass="max-w-2xl" />
           </FadeIn>
           <CockpitFlow scenario={scenarioFlow.scenario} steps={scenarioFlow.steps as CockpitFlowStep[]} />
         </div>
@@ -149,20 +133,12 @@ export default function Act1Page() {
       <section className="border-t" style={{ background: "var(--brand-section-alt)", borderColor: "var(--brand-surface-border)" }}>
         <div className="max-w-6xl mx-auto px-6 py-20">
           <FadeIn>
-            <div className="mb-12">
-              <div className="mb-5"><span className="eyebrow-pill">What Makes It Possible</span></div>
-              <h2 className="font-display text-4xl sm:text-5xl font-black tracking-tight leading-[0.95] mb-4 max-w-2xl" style={{ color: "var(--brand-text-heading)" }}>
-                Built on what you already own.
-              </h2>
-              <p className="text-lg max-w-xl leading-relaxed" style={{ color: "var(--brand-text-muted)" }}>
-                This isn&apos;t a new procurement decision. It&apos;s an activation of the Salesforce portfolio already in place.
-              </p>
-            </div>
+            <SectionHeader eyebrow="What Makes It Possible" headline="Built on what you already own." subtext="This isn't a new procurement decision. It's an activation of the Salesforce portfolio already in place." maxWidthClass="max-w-xl" />
           </FadeIn>
-          <div className="grid sm:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-3" style={{ gap: "var(--brand-density-gap)" }}>
             {enablers.map((e, i) => (
               <FadeIn key={e.name} delay={i * 100}>
-                <div className="rounded-[var(--brand-radius)] border p-8 h-full transition-all hover:border-[var(--brand-primary)]/20 hover:shadow-sm" style={{ background: "var(--brand-card-bg)", borderColor: "var(--brand-card-border)", boxShadow: "var(--brand-card-shadow)" }}>
+                <div className="rounded-[var(--brand-radius)] border h-full transition-all hover:border-[var(--brand-primary)]/20 hover:shadow-sm" style={{ background: "var(--brand-card-bg)", borderColor: "var(--brand-card-border)", boxShadow: "var(--brand-card-shadow)", padding: "var(--brand-density-pad)" }}>
                   <div className="mb-2"><span className="eyebrow-pill">{e.name}</span></div>
                   <h4 className="font-display text-xl font-black mt-4 mb-2" style={{ color: "var(--brand-text-heading)" }}>{e.role}</h4>
                   <p className="text-base leading-relaxed" style={{ color: "var(--brand-text-muted)" }}>{e.description}</p>

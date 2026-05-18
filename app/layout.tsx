@@ -38,6 +38,13 @@ const FONT_PAIRINGS = {
 const activePairing = FONT_PAIRINGS[ACCOUNT.brand.fonts ?? "editorial"];
 const activeTheme = THEMES[ACCOUNT.brand.theme ?? "dark"];
 
+const DENSITY_TOKENS = {
+  compact:  { gap: "1rem",    pad: "1.25rem" },
+  default:  { gap: "1.5rem",  pad: "2rem"    },
+  spacious: { gap: "2rem",    pad: "2.5rem"  },
+};
+const activeDensity = DENSITY_TOKENS[ACCOUNT.brand.density ?? "default"];
+
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000";
 
 export const metadata: Metadata = {
@@ -60,6 +67,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang="en"
       data-theme={ACCOUNT.brand.theme ?? "dark"}
+      data-align={ACCOUNT.brand.headerAlign ?? "left"}
       className={`${inter.variable} ${dmSans.variable} ${spaceGrotesk.variable} ${sora.variable} ${playfair.variable} ${cormorant.variable}`}
       style={{
         ["--brand-primary" as string]:        ACCOUNT.brand.primary,
@@ -73,9 +81,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         ["--brand-surface-border" as string]: activeTheme.surfaceBorder,
         ["--brand-section-alt" as string]:    activeTheme.sectionAlt,
         ["--brand-radius" as string]:         activeTheme.radius,
-        ["--brand-card-bg" as string]:        activeTheme.cardBg,
+        ["--brand-card-bg" as string]:         activeTheme.cardBg,
         ["--brand-card-border" as string]:    activeTheme.cardBorder,
         ["--brand-card-shadow" as string]:    activeTheme.cardShadow,
+        ["--brand-density-gap" as string]:    activeDensity.gap,
+        ["--brand-density-pad" as string]:    activeDensity.pad,
         ["--font-display" as string]:         `var(${activePairing.display})`,
         ["--font-body" as string]:            `var(${activePairing.body})`,
       }}

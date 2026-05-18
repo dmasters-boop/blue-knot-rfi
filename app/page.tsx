@@ -7,6 +7,7 @@ import Hero from "@/components/Hero";
 import ActCard from "@/components/ActCard";
 import FadeIn from "@/components/FadeIn";
 import Footer from "@/components/Footer";
+import SectionHeader from "@/components/SectionHeader";
 
 export const metadata: Metadata = {
   title: `${ACCOUNT.hero.headline.replace(/\n/g, " ")} · ${ACCOUNT.company} Executive Briefing`,
@@ -35,27 +36,22 @@ export default function HomePage() {
       <section className="border-t" style={{ background: "var(--brand-section-alt)", borderColor: "var(--brand-surface-border)" }}>
         <div className="max-w-6xl mx-auto px-6 py-24">
           <FadeIn>
-            <div className="mb-12">
-              <div className="mb-5">
-                <span className="eyebrow-pill">The Platform Footprint</span>
-              </div>
-              <h2 className="font-display text-4xl sm:text-5xl font-black tracking-tight leading-[0.95] mb-4 max-w-2xl" style={{ color: "var(--brand-text-heading)" }}>
-                The investment is made.
-              </h2>
-              <p className="text-lg max-w-xl leading-relaxed" style={{ color: "var(--brand-text-muted)" }}>
-                {ACCOUNT.company} has built a Salesforce platform. Two capabilities are the key to unlocking everything else.
-              </p>
-            </div>
+            <SectionHeader
+              eyebrow="The Platform Footprint"
+              headline="The investment is made."
+              subtext={`${ACCOUNT.company} has built a Salesforce platform. Two capabilities are the key to unlocking everything else.`}
+              maxWidthClass="max-w-xl"
+            />
           </FadeIn>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-4" style={{ gap: "var(--brand-density-gap)" }}>
             {platformInvestments.map((inv, i) => (
               <FadeIn key={inv.product} delay={i * 55}>
                 <div
                   className="relative p-6 h-full border transition-all rounded-[var(--brand-radius)]"
                   style={inv.highlight
-                    ? { background: "var(--brand-primary)", borderColor: "var(--brand-primary)", boxShadow: "0 8px 30px color-mix(in srgb, var(--brand-primary) 30%, transparent)" }
-                    : { background: "var(--brand-card-bg)", borderColor: "var(--brand-card-border)", boxShadow: "var(--brand-card-shadow)" }
+                    ? { background: "var(--brand-primary)", borderColor: "var(--brand-primary)", boxShadow: "0 8px 30px color-mix(in srgb, var(--brand-primary) 30%, transparent)", padding: "var(--brand-density-pad)" }
+                    : { background: "var(--brand-card-bg)", borderColor: "var(--brand-card-border)", boxShadow: "var(--brand-card-shadow)", padding: "var(--brand-density-pad)" }
                   }
                 >
                   <div className="text-[10px] font-bold tracking-widest uppercase mb-4" style={{ color: inv.highlight ? "rgba(255,255,255,0.7)" : "var(--brand-text-muted)" }}>
@@ -135,20 +131,16 @@ export default function HomePage() {
       <section id="acts" style={{ background: "var(--brand-light)" }}>
         <div className="max-w-6xl mx-auto px-6 py-24">
           <FadeIn>
-            <div className="mb-14">
-              <div className="mb-5">
-                <span className="eyebrow-pill-outline">The Transformation Story</span>
-              </div>
-              <h2 className="font-display text-4xl sm:text-5xl font-black mb-4 tracking-tight leading-[0.95]" style={{ color: "var(--brand-text-heading)" }}>
-                Three chapters. One outcome.
-              </h2>
-              <p className="text-lg max-w-xl leading-relaxed" style={{ color: "var(--brand-text-muted)" }}>
-                A transformation story — from where {ACCOUNT.company} is today to where it could operate tomorrow.
-              </p>
-            </div>
+            <SectionHeader
+              eyebrow="The Transformation Story"
+              eyebrowVariant="outline"
+              headline="Three chapters. One outcome."
+              subtext={`A transformation story — from where ${ACCOUNT.company} is today to where it could operate tomorrow.`}
+              maxWidthClass="max-w-xl"
+            />
           </FadeIn>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3" style={{ gap: "var(--brand-density-gap)" }}>
             {acts.map((act, i) => (
               <FadeIn key={act.number} delay={i * 100}>
                 <ActCard number={act.number} href={act.href} title={act.title} tagline={act.tagline} description={act.description} />
@@ -162,20 +154,15 @@ export default function HomePage() {
       <section className="border-t" style={{ background: "var(--brand-section-alt)", borderColor: "var(--brand-surface-border)" }}>
         <div className="max-w-6xl mx-auto px-6 py-24">
           <FadeIn>
-            <div className="mb-12">
-              <div className="mb-5">
-                <span className="eyebrow-pill">Go Deeper</span>
-              </div>
-              <h2 className="font-display text-4xl sm:text-5xl font-black tracking-tight leading-[0.95] mb-4" style={{ color: "var(--brand-text-heading)" }}>
-                Explore the full picture.
-              </h2>
-              <p className="text-lg max-w-xl leading-relaxed" style={{ color: "var(--brand-text-muted)" }}>
-                Every dimension of the transformation — from architecture to agents to business case.
-              </p>
-            </div>
+            <SectionHeader
+              eyebrow="Go Deeper"
+              headline="Explore the full picture."
+              subtext="Every dimension of the transformation — from architecture to agents to business case."
+              maxWidthClass="max-w-xl"
+            />
           </FadeIn>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4" style={{ gap: "var(--brand-density-gap)" }}>
             {[
               { href: "/architecture",  label: "Architecture",   desc: "The layered platform stack" },
               { href: "/strategy",      label: "Strategy",       desc: "Transformation framework" },
@@ -188,8 +175,8 @@ export default function HomePage() {
               <FadeIn key={item.href} delay={i * 40}>
                 <Link
                   href={item.href}
-                  className="group flex flex-col gap-1.5 p-5 rounded-[var(--brand-radius)] border transition-all duration-200 hover:border-[var(--brand-primary)]/40"
-                  style={{ background: "var(--brand-card-bg)", borderColor: "var(--brand-card-border)", boxShadow: "var(--brand-card-shadow)" }}
+                  className="group flex flex-col gap-1.5 rounded-[var(--brand-radius)] border transition-all duration-200 hover:border-[var(--brand-primary)]/40"
+                  style={{ background: "var(--brand-card-bg)", borderColor: "var(--brand-card-border)", boxShadow: "var(--brand-card-shadow)", padding: "var(--brand-density-pad)" }}
                 >
                   <p className="font-display text-base font-black group-hover:text-[var(--brand-primary)] transition-colors duration-200 leading-tight" style={{ color: "var(--brand-text-heading)" }}>
                     {item.label}

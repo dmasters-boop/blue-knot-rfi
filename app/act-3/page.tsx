@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { ACCOUNT } from "@/data/account";
 import Nav from "@/components/Nav";
+import SectionHeader from "@/components/SectionHeader";
 import Hero from "@/components/Hero";
 import QuoteBlock from "@/components/QuoteBlock";
 import AgenticFlow from "@/components/AgenticFlow";
@@ -21,10 +22,10 @@ export default function Act3Page() {
       {/* Narrative cards */}
       <section style={{ background: "var(--brand-section-alt)" }}>
         <div className="max-w-6xl mx-auto px-6 py-20">
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="grid sm:grid-cols-2" style={{ gap: "var(--brand-density-gap)" }}>
             {narrative.map((block, i) => (
               <FadeIn key={block.title} delay={i * 120}>
-                <div className="rounded-[var(--brand-radius)] border p-8 h-full transition-shadow hover:shadow-md" style={{ background: "var(--brand-card-bg)", borderColor: "var(--brand-card-border)", boxShadow: "var(--brand-card-shadow)" }}>
+                <div className="rounded-[var(--brand-radius)] border h-full transition-shadow hover:shadow-md" style={{ background: "var(--brand-card-bg)", borderColor: "var(--brand-card-border)", boxShadow: "var(--brand-card-shadow)", padding: "var(--brand-density-pad)" }}>
                   <h3 className="font-display text-xl font-black mb-3 leading-tight" style={{ color: "var(--brand-text-heading)" }}>{block.title}</h3>
                   <p className="text-base leading-relaxed" style={{ color: "var(--brand-text-muted)" }}>{block.body}</p>
                 </div>
@@ -57,14 +58,8 @@ export default function Act3Page() {
       <section className="border-t" style={{ background: "var(--brand-section-alt)", borderColor: "var(--brand-surface-border)" }}>
         <div className="max-w-6xl mx-auto px-6 py-20">
           <FadeIn>
-            <div className="mb-10">
-              <div className="mb-5"><span className="eyebrow-pill-outline">{scenario.eyebrow}</span></div>
-              <h2 className="font-display text-4xl sm:text-5xl font-black tracking-tight leading-[0.95] mb-4 max-w-2xl" style={{ color: "var(--brand-text-heading)" }}>
-                {scenario.title}
-              </h2>
-              <p className="text-lg max-w-2xl leading-relaxed" style={{ color: "var(--brand-text-muted)" }}>{scenario.subtitle}</p>
-              <p className="text-sm mt-4" style={{ color: "var(--brand-text-muted)", opacity: 0.6 }}>Click any step to expand details.</p>
-            </div>
+            <SectionHeader eyebrow={scenario.eyebrow} eyebrowVariant="outline" headline={scenario.title} subtext={scenario.subtitle} maxWidthClass="max-w-2xl" />
+            <p className="text-sm -mt-8 mb-10" style={{ color: "var(--brand-text-muted)", opacity: 0.6 }}>Click any step to expand details.</p>
           </FadeIn>
           <FadeIn delay={100}><AgenticFlow steps={scenario.steps} /></FadeIn>
         </div>
@@ -74,17 +69,12 @@ export default function Act3Page() {
       <section className="border-t" style={{ background: "var(--brand-bg)", borderColor: "var(--brand-surface-border)" }}>
         <div className="max-w-6xl mx-auto px-6 py-20">
           <FadeIn>
-            <div className="mb-12">
-              <div className="mb-5"><span className="eyebrow-pill">Commercial Outcomes</span></div>
-              <h2 className="font-display text-4xl sm:text-5xl font-black tracking-tight leading-[0.95]" style={{ color: "var(--brand-text-heading)" }}>
-                The measurable transformation.
-              </h2>
-            </div>
+            <SectionHeader eyebrow="Commercial Outcomes" headline="The measurable transformation." />
           </FadeIn>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-5">
+          <div className="grid grid-cols-2 sm:grid-cols-4" style={{ gap: "var(--brand-density-gap)" }}>
             {outcomes.map((o, i) => (
               <FadeIn key={o.label} delay={i * 80}>
-                <div className="rounded-[var(--brand-radius)] border px-6 py-8 text-center" style={{ background: "var(--brand-card-bg)", borderColor: "var(--brand-card-border)", boxShadow: "var(--brand-card-shadow)" }}>
+                <div className="rounded-[var(--brand-radius)] border text-center" style={{ background: "var(--brand-card-bg)", borderColor: "var(--brand-card-border)", boxShadow: "var(--brand-card-shadow)", padding: "var(--brand-density-pad)" }}>
                   <p className="font-display text-4xl font-black mb-2 tabular-nums" style={{ color: "var(--brand-primary)" }}>{o.metric}</p>
                   <p className="text-sm font-semibold leading-snug" style={{ color: "var(--brand-text-muted)" }}>{o.label}</p>
                 </div>
@@ -98,20 +88,12 @@ export default function Act3Page() {
       <section className="border-t" style={{ background: "var(--brand-section-alt)", borderColor: "var(--brand-surface-border)" }}>
         <div className="max-w-6xl mx-auto px-6 py-20">
           <FadeIn>
-            <div className="mb-12">
-              <div className="mb-5"><span className="eyebrow-pill">What Powers This</span></div>
-              <h2 className="font-display text-4xl sm:text-5xl font-black tracking-tight leading-[0.95] mb-4 max-w-2xl" style={{ color: "var(--brand-text-heading)" }}>
-                Three platforms. One commercial operating system.
-              </h2>
-              <p className="text-lg max-w-xl leading-relaxed" style={{ color: "var(--brand-text-muted)" }}>
-                The Agentic Enterprise isn&apos;t a new architecture. It&apos;s what happens when the platforms you already own are orchestrated to act together.
-              </p>
-            </div>
+            <SectionHeader eyebrow="What Powers This" headline="Three platforms. One commercial operating system." subtext="The Agentic Enterprise isn't a new architecture. It's what happens when the platforms you already own are orchestrated to act together." maxWidthClass="max-w-xl" />
           </FadeIn>
-          <div className="grid sm:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-3" style={{ gap: "var(--brand-density-gap)" }}>
             {enablers.map((e, i) => (
               <FadeIn key={e.name} delay={i * 100}>
-                <div className="rounded-[var(--brand-radius)] border p-8 h-full transition-all hover:border-[var(--brand-primary)]/20 hover:shadow-md" style={{ background: "var(--brand-card-bg)", borderColor: "var(--brand-card-border)", boxShadow: "var(--brand-card-shadow)" }}>
+                <div className="rounded-[var(--brand-radius)] border h-full transition-all hover:border-[var(--brand-primary)]/20 hover:shadow-md" style={{ background: "var(--brand-card-bg)", borderColor: "var(--brand-card-border)", boxShadow: "var(--brand-card-shadow)", padding: "var(--brand-density-pad)" }}>
                   <div className="mb-4"><span className="eyebrow-pill">{e.name}</span></div>
                   <h4 className="font-display text-xl font-black mt-4 mb-2" style={{ color: "var(--brand-text-heading)" }}>{e.tagline}</h4>
                   <p className="text-sm leading-relaxed mb-5" style={{ color: "var(--brand-text-muted)" }}>{e.description}</p>

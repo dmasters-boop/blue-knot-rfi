@@ -27,6 +27,8 @@
     --brand-card-bg:        rgba(255,255,255,0.04);
     --brand-card-border:    rgba(255,255,255,0.08);
     --brand-card-shadow:    none;
+    --brand-density-gap:    1.5rem;
+    --brand-density-pad:    2rem;
   }
 }
 
