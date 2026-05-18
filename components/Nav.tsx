@@ -6,21 +6,25 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { ACCOUNT } from "@/data/account";
 
-const navLinks = [
-  { href: "/",               label: "Overview" },
-  { href: "/act-1",          label: ACCOUNT.acts[0].title },
-  { href: "/act-2",          label: ACCOUNT.acts[1].title },
-  { href: "/act-3",          label: ACCOUNT.acts[2].title },
-  { href: "/architecture",   label: "Architecture" },
-  { href: "/strategy",       label: "Strategy" },
-  { href: "/agent-tracker",  label: "Agent Tracker" },
-  { href: "/proof",          label: "Results" },
-  { href: "/use-cases",      label: "Use Cases" },
-  { href: "/business-case",  label: "Business Case" },
-  { href: "/pilot",          label: "Pilot Plan" },
-  { href: "/account-team",   label: "Account Team" },
-  { href: "/demo-library",   label: "Demo Library" },
+const allNavLinks = [
+  { href: "/",               slug: "overview",      label: "Overview" },
+  { href: "/act-1",          slug: "act-1",         label: ACCOUNT.acts[0].title },
+  { href: "/act-2",          slug: "act-2",         label: ACCOUNT.acts[1].title },
+  { href: "/act-3",          slug: "act-3",         label: ACCOUNT.acts[2].title },
+  { href: "/architecture",   slug: "architecture",  label: "Architecture" },
+  { href: "/strategy",       slug: "strategy",      label: "Strategy" },
+  { href: "/agent-tracker",  slug: "agent-tracker", label: "Agent Tracker" },
+  { href: "/proof",          slug: "proof",         label: "Results" },
+  { href: "/use-cases",      slug: "use-cases",     label: "Use Cases" },
+  { href: "/business-case",  slug: "business-case", label: "Business Case" },
+  { href: "/pilot",          slug: "pilot",         label: "Pilot Plan" },
+  { href: "/account-team",   slug: "account-team",  label: "Account Team" },
+  { href: "/demo-library",   slug: "demo-library",  label: "Demo Library" },
 ];
+
+const navLinks = allNavLinks.filter(
+  ({ slug }) => slug === "overview" || ACCOUNT.pages.includes(slug)
+);
 
 export default function Nav() {
   const pathname = usePathname();
@@ -115,19 +119,21 @@ export default function Nav() {
                   );
                 })}
               </nav>
-              <div className="p-2 pt-0">
-                <div className="h-px bg-white/8 mb-2" />
-                <Link
-                  href="/account-team"
-                  className="flex items-center justify-center gap-2 w-full px-4 py-3 rounded-xl bg-[var(--brand-primary)] hover:bg-[var(--brand-primary-dark)] text-white font-bold text-sm transition-all duration-150"
-                  onClick={() => setOpen(false)}
-                >
-                  {ACCOUNT.cta.primary.label}
-                  <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden>
-                    <path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </Link>
-              </div>
+              {ACCOUNT.pages.includes("account-team") && (
+                <div className="p-2 pt-0">
+                  <div className="h-px bg-white/8 mb-2" />
+                  <Link
+                    href="/account-team"
+                    className="flex items-center justify-center gap-2 w-full px-4 py-3 rounded-xl bg-[var(--brand-primary)] hover:bg-[var(--brand-primary-dark)] text-white font-bold text-sm transition-all duration-150"
+                    onClick={() => setOpen(false)}
+                  >
+                    {ACCOUNT.cta.primary.label}
+                    <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden>
+                      <path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </Link>
+                </div>
+              )}
             </div>
           )}
         </div>

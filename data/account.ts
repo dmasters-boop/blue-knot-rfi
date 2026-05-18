@@ -122,6 +122,39 @@ export const ACCOUNT = {
     customerLogoDark: undefined as string | undefined,
   },
 
+  // ── Pages ──────────────────────────────────────────────────────────────────
+  // Controls which pages appear in the nav. Remove any you don't need for this
+  // engagement. You can always add them back later, or build custom pages in app/.
+  //
+  // Available slugs:
+  //   "overview"       — Home / executive summary (always shown, cannot be hidden)
+  //   "act-1"          — The Gap / current state
+  //   "act-2"          — The Foundation / data platform
+  //   "act-3"          — The Future / agentic enterprise
+  //   "use-cases"      — Detailed use case deep-dives
+  //   "architecture"   — Technical architecture diagram
+  //   "strategy"       — Strategic roadmap
+  //   "agent-tracker"  — Live agent deployment dashboard
+  //   "proof"          — Results and proof points
+  //   "business-case"  — ROI and business value
+  //   "pilot"          — Pilot plan and next steps
+  //   "demo-library"   — Curated demo video library
+  //   "account-team"   — Your Salesforce account team
+  //
+  pages: [
+    "act-1",
+    "act-2",
+    "act-3",
+    "use-cases",
+    "architecture",
+    "agent-tracker",
+    "proof",
+    "business-case",
+    "pilot",
+    "demo-library",
+    "account-team",
+  ] as string[],
+
   // ── Hero ───────────────────────────────────────────────────────────────────
   hero: {
     eyebrow: "Executive Briefing",
