@@ -59,6 +59,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
+      data-theme={ACCOUNT.brand.theme ?? "dark"}
       className={`${inter.variable} ${dmSans.variable} ${spaceGrotesk.variable} ${sora.variable} ${playfair.variable} ${cormorant.variable}`}
       style={{
         ["--brand-primary" as string]:        ACCOUNT.brand.primary,
@@ -72,6 +73,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         ["--brand-surface-border" as string]: activeTheme.surfaceBorder,
         ["--brand-section-alt" as string]:    activeTheme.sectionAlt,
         ["--brand-radius" as string]:         activeTheme.radius,
+        ["--brand-card-bg" as string]:        activeTheme.cardBg,
+        ["--brand-card-border" as string]:    activeTheme.cardBorder,
+        ["--brand-card-shadow" as string]:    activeTheme.cardShadow,
         ["--font-display" as string]:         `var(${activePairing.display})`,
         ["--font-body" as string]:            `var(${activePairing.body})`,
       }}

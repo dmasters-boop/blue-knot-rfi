@@ -10,6 +10,11 @@ export interface ThemeTokens {
   surfaceBorder:  string;
   sectionAlt:     string;
   radius:         string;
+  cardBg:         string;
+  cardBorder:     string;
+  cardShadow:     string;
+  // Whether the Gap/problem section uses full brand-primary bleed or subtle tinted treatment
+  gapStyle:       "bleed" | "tinted";
 }
 
 export const THEMES: Record<ThemeName, ThemeTokens> = {
@@ -24,6 +29,10 @@ export const THEMES: Record<ThemeName, ThemeTokens> = {
     surfaceBorder: "rgba(255,255,255,0.08)",
     sectionAlt:    "rgba(255,255,255,0.02)",
     radius:        "1rem",
+    cardBg:        "rgba(255,255,255,0.04)",
+    cardBorder:    "rgba(255,255,255,0.08)",
+    cardShadow:    "none",
+    gapStyle:      "bleed",
   },
 
   // White background, dark text — clean, modern, approachable enterprise
@@ -37,6 +46,10 @@ export const THEMES: Record<ThemeName, ThemeTokens> = {
     surfaceBorder: "rgba(0,0,0,0.08)",
     sectionAlt:    "#F9FAFB",
     radius:        "0.75rem",
+    cardBg:        "#FFFFFF",
+    cardBorder:    "rgba(0,0,0,0.08)",
+    cardShadow:    "0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04)",
+    gapStyle:      "tinted",
   },
 
   // Warm off-white, airy — premium, life sciences, heritage brands
@@ -50,6 +63,10 @@ export const THEMES: Record<ThemeName, ThemeTokens> = {
     surfaceBorder: "rgba(0,0,0,0.07)",
     sectionAlt:    "#F5F2EE",
     radius:        "0.5rem",
+    cardBg:        "#FFFFFF",
+    cardBorder:    "rgba(0,0,0,0.07)",
+    cardShadow:    "0 1px 3px rgba(0,0,0,0.06)",
+    gapStyle:      "tinted",
   },
 
   // Deep charcoal, high contrast, strong color — energy, manufacturing, field ops
@@ -63,6 +80,10 @@ export const THEMES: Record<ThemeName, ThemeTokens> = {
     surfaceBorder: "rgba(255,255,255,0.1)",
     sectionAlt:    "rgba(255,255,255,0.03)",
     radius:        "0.375rem",
+    cardBg:        "rgba(255,255,255,0.06)",
+    cardBorder:    "rgba(255,255,255,0.1)",
+    cardShadow:    "none",
+    gapStyle:      "bleed",
   },
 
   // Light gray, structured, conservative — financial services, government, insurance
@@ -76,5 +97,9 @@ export const THEMES: Record<ThemeName, ThemeTokens> = {
     surfaceBorder: "rgba(0,0,0,0.1)",
     sectionAlt:    "#E8EBF0",
     radius:        "0.5rem",
+    cardBg:        "#FFFFFF",
+    cardBorder:    "rgba(0,0,0,0.1)",
+    cardShadow:    "0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)",
+    gapStyle:      "tinted",
   },
 };

@@ -24,6 +24,9 @@
     --brand-surface-border: rgba(255,255,255,0.08);
     --brand-section-alt:    rgba(255,255,255,0.02);
     --brand-radius:         1rem;
+    --brand-card-bg:        rgba(255,255,255,0.04);
+    --brand-card-border:    rgba(255,255,255,0.08);
+    --brand-card-shadow:    none;
   }
 }
 
