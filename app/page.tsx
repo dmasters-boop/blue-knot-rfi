@@ -25,6 +25,7 @@ export default function HomePage() {
         subheadline={hero.subheadline}
         ctaPrimary={hero.ctaPrimary}
         ctaSecondary={hero.ctaSecondary}
+        stats={gap.stats}
         variant="home"
       />
 
@@ -151,7 +152,6 @@ export default function HomePage() {
             {[
               { href: "/architecture",  label: "Architecture",   desc: "The layered platform stack" },
               { href: "/strategy",      label: "Strategy",       desc: "Transformation framework" },
-              { href: "/agents",        label: "Agents",         desc: "Purpose-built for your team" },
               { href: "/agent-tracker", label: "Agent Tracker",  desc: "What's live and in motion" },
               { href: "/proof",         label: "Results",        desc: "Outcomes by function" },
               { href: "/use-cases",     label: "Use Cases",      desc: "Specific workflows transformed" },

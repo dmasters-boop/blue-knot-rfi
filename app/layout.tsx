@@ -9,6 +9,7 @@ import {
 } from "next/font/google";
 import "./globals.css";
 import { ACCOUNT } from "@/data/account";
+import { THEMES } from "@/lib/themes";
 import StickyNav from "@/components/StickyNav";
 import PageTransition from "@/components/PageTransition";
 import AgentforceChat from "@/components/AgentforceChat";
@@ -35,6 +36,7 @@ const FONT_PAIRINGS = {
 };
 
 const activePairing = FONT_PAIRINGS[ACCOUNT.brand.fonts ?? "editorial"];
+const activeTheme = THEMES[ACCOUNT.brand.theme ?? "dark"];
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000";
 
@@ -59,15 +61,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       className={`${inter.variable} ${dmSans.variable} ${spaceGrotesk.variable} ${sora.variable} ${playfair.variable} ${cormorant.variable}`}
       style={{
-        ["--brand-primary" as string]:      ACCOUNT.brand.primary,
-        ["--brand-primary-dark" as string]: ACCOUNT.brand.primaryDark,
-        ["--brand-bg" as string]:           ACCOUNT.brand.bg,
-        ["--brand-light" as string]:        ACCOUNT.brand.light,
-        ["--font-display" as string]:       `var(${activePairing.display})`,
-        ["--font-body" as string]:          `var(${activePairing.body})`,
+        ["--brand-primary" as string]:        ACCOUNT.brand.primary,
+        ["--brand-primary-dark" as string]:   ACCOUNT.brand.primaryDark,
+        ["--brand-bg" as string]:             ACCOUNT.brand.bg ?? activeTheme.bg,
+        ["--brand-light" as string]:          ACCOUNT.brand.light ?? activeTheme.light,
+        ["--brand-text" as string]:           activeTheme.text,
+        ["--brand-text-muted" as string]:     activeTheme.textMuted,
+        ["--brand-text-heading" as string]:   activeTheme.textHeading,
+        ["--brand-surface" as string]:        activeTheme.surface,
+        ["--brand-surface-border" as string]: activeTheme.surfaceBorder,
+        ["--brand-section-alt" as string]:    activeTheme.sectionAlt,
+        ["--brand-radius" as string]:         activeTheme.radius,
+        ["--font-display" as string]:         `var(${activePairing.display})`,
+        ["--font-body" as string]:            `var(${activePairing.body})`,
       }}
     >
-      <body className="bg-[var(--brand-bg)] text-white antialiased" style={{ fontFamily: "var(--font-body), sans-serif" }}>
+      <body className="bg-[var(--brand-bg)] antialiased" style={{ fontFamily: "var(--font-body), sans-serif", color: "var(--brand-text)" }}>
         <PageTransition>{children}</PageTransition>
         <StickyNav />
         <AgentforceChat />

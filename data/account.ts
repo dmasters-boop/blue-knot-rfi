@@ -83,6 +83,20 @@ export const ACCOUNT = {
     // "technical"  — Space Grotesk + Inter        (engineering-led, platform companies, cloud)
     // "bold"       — Sora + Inter                 (bold enterprise, energy, manufacturing, field operations)
     fonts: "editorial" as "editorial" | "refined" | "modern" | "technical" | "bold",
+
+    // Visual theme — controls background, text colors, surface treatment:
+    // "dark"       — near-black bg, white text (default — works for most accounts)
+    // "light"      — white bg, dark text (clean, modern, approachable)
+    // "editorial"  — warm off-white bg, dark text, airy (premium, life sciences, heritage)
+    // "bold"       — deep charcoal bg, high contrast, strong color blocks (energy, manufacturing)
+    // "corporate"  — light gray bg, structured, conservative (financial services, government)
+    theme: "dark" as "dark" | "light" | "editorial" | "bold" | "corporate",
+
+    // Hero layout variant:
+    // "centered"   — full-width headline centered (default)
+    // "split"      — text left, stat/metric block right
+    // "minimal"    — compact headline + CTA, no decorative elements
+    heroLayout: "centered" as "centered" | "split" | "minimal",
   },
 
   // ── Hero ───────────────────────────────────────────────────────────────────

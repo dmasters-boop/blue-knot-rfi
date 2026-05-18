@@ -13,7 +13,6 @@ const navLinks = [
   { href: "/architecture",   label: "Architecture" },
   { href: "/strategy",       label: "Strategy" },
   { href: "/agent-tracker",  label: "Agent Tracker" },
-  { href: "/agents",         label: "Agents" },
   { href: "/proof",          label: "Results" },
   { href: "/use-cases",      label: "Use Cases" },
   { href: "/business-case",  label: "Business Case" },
@@ -45,17 +44,17 @@ export default function Nav() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 bg-[var(--brand-bg)] border-b border-white/10 shadow-lg shadow-black/30">
+    <header className="sticky top-0 z-50 bg-[var(--brand-bg)] border-b border-[var(--brand-surface-border)] shadow-lg shadow-black/20">
       <div className="absolute top-0 left-0 right-0 h-[3px] bg-[var(--brand-primary)]" />
 
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
 
         <Link href="/" className="flex items-center gap-3 shrink-0 group">
           <div className="leading-tight">
-            <p className="text-[10px] font-bold tracking-[0.18em] uppercase text-white/50 mb-0.5">
+            <p className="text-[10px] font-bold tracking-[0.18em] uppercase mb-0.5" style={{ color: "var(--brand-text-muted)" }}>
               Executive Briefing
             </p>
-            <p className="font-display text-[1rem] font-black text-white leading-none group-hover:text-[var(--brand-primary)] transition-colors duration-200">
+            <p className="font-display text-[1rem] font-black leading-none group-hover:text-[var(--brand-primary)] transition-colors duration-200" style={{ color: "var(--brand-text-heading)" }}>
               {ACCOUNT.company}
             </p>
           </div>
@@ -66,15 +65,15 @@ export default function Nav() {
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
-            className="flex flex-col justify-center items-center w-10 h-10 gap-1.5 rounded-lg hover:bg-white/8 transition-colors"
+            className="flex flex-col justify-center items-center w-10 h-10 gap-1.5 rounded-lg hover:bg-[var(--brand-surface)] transition-colors"
           >
-            <span className={`block w-5 h-0.5 bg-white transition-all duration-200 origin-center ${open ? "rotate-45 translate-y-2" : ""}`} />
-            <span className={`block w-5 h-0.5 bg-white transition-all duration-200 ${open ? "opacity-0" : ""}`} />
-            <span className={`block w-5 h-0.5 bg-white transition-all duration-200 origin-center ${open ? "-rotate-45 -translate-y-2" : ""}`} />
+            <span className={`block w-5 h-0.5 transition-all duration-200 origin-center ${open ? "rotate-45 translate-y-2" : ""}`} style={{ background: "var(--brand-text)" }} />
+            <span className={`block w-5 h-0.5 transition-all duration-200 ${open ? "opacity-0" : ""}`} style={{ background: "var(--brand-text)" }} />
+            <span className={`block w-5 h-0.5 transition-all duration-200 origin-center ${open ? "-rotate-45 -translate-y-2" : ""}`} style={{ background: "var(--brand-text)" }} />
           </button>
 
           {open && (
-            <div className="absolute right-0 top-[calc(100%+8px)] w-64 bg-[var(--brand-bg)] border border-white/10 rounded-2xl shadow-2xl shadow-black/60 overflow-hidden">
+            <div className="absolute right-0 top-[calc(100%+8px)] w-64 bg-[var(--brand-bg)] border border-[var(--brand-surface-border)] rounded-2xl shadow-2xl shadow-black/40 overflow-hidden">
               <nav className="p-2">
                 {navLinks.map(({ href, label }) => {
                   const active = href === "/" ? pathname === "/" : pathname === href;
@@ -83,10 +82,9 @@ export default function Nav() {
                       key={href}
                       href={href}
                       className={`flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-150 ${
-                        active
-                          ? "bg-[var(--brand-primary)] text-white"
-                          : "text-white/70 hover:text-white hover:bg-white/8"
+                        active ? "bg-[var(--brand-primary)]" : "hover:bg-[var(--brand-surface)]"
                       }`}
+                      style={{ color: active ? "white" : "var(--brand-text-muted)" }}
                     >
                       {label}
                       {active && (

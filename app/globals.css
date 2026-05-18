@@ -11,10 +11,19 @@
 
   :root {
     /* ── Brand tokens — set these per account in ACCOUNT.brand ── */
-    --brand-primary:      #0066FF;
-    --brand-primary-dark: #0052CC;
-    --brand-bg:           #0A0A0A;
-    --brand-light:        #F5F5F5;
+    --brand-primary:        #0066FF;
+    --brand-primary-dark:   #0052CC;
+    --brand-bg:             #0A0A0A;
+    --brand-light:          #F5F5F5;
+
+    /* ── Theme tokens — set by theme preset, override in ACCOUNT.brand ── */
+    --brand-text:           #FFFFFF;
+    --brand-text-muted:     rgba(255,255,255,0.55);
+    --brand-text-heading:   #FFFFFF;
+    --brand-surface:        rgba(255,255,255,0.04);
+    --brand-surface-border: rgba(255,255,255,0.08);
+    --brand-section-alt:    rgba(255,255,255,0.02);
+    --brand-radius:         1rem;
   }
 }
 
