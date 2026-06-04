@@ -57,123 +57,59 @@ function StatusDot({ status }: { status: keyof typeof STATUS }) {
   );
 }
 
-// ── Live card — full-width featured row ───────────────────────────────────────
-function LiveCard({ agent, onClick }: { agent: Agent; onClick: () => void }) {
+// ── Single consistent agent card ─────────────────────────────────────────────
+function AgentCard({ agent, onClick }: { agent: Agent; onClick: () => void }) {
+  const s = STATUS[agent.status];
   return (
     <button
       onClick={onClick}
-      className="group w-full text-left rounded-2xl overflow-hidden transition-all duration-200 hover:-translate-y-0.5"
+      className="group w-full h-full text-left rounded-2xl p-6 transition-all duration-200 hover:-translate-y-0.5"
       style={{ background: "var(--brand-card-bg)", border: "1px solid var(--brand-card-border)" }}
     >
-      <div className="flex items-stretch gap-0">
-
-        {/* Left: identity */}
-        <div className="flex items-start gap-5 p-7 flex-1 min-w-0">
-          <Avatar agent={agent} size={64} className="w-16 h-16 rounded-xl shrink-0" />
-          <div className="flex-1 min-w-0 pt-0.5">
-            <div className="flex items-center gap-2.5 mb-2">
-              <StatusDot status="live" />
-              <span className="text-[0.6rem] font-bold tracking-[0.14em] uppercase" style={{ color: "#22c55e" }}>Live</span>
-              <span className="text-[0.6rem]" style={{ color: "var(--brand-text-muted)", opacity: 0.35 }}>·</span>
-              <span className="text-[0.6rem] font-medium truncate" style={{ color: "var(--brand-text-muted)", opacity: 0.4 }}>{agent.goLive}</span>
-            </div>
-            <h3 className="font-display text-xl font-black leading-tight mb-1.5 group-hover:text-[var(--brand-primary)] transition-colors duration-200" style={{ color: "var(--brand-text-heading)" }}>
-              {agent.name}
-            </h3>
-            <p className="text-xs" style={{ color: "var(--brand-text-muted)", opacity: 0.5 }}>{agent.function}</p>
-          </div>
-        </div>
-
-        {/* Right: metrics — the payoff */}
-        {agent.metrics && agent.metrics.length > 0 && (
-          <div
-            className="shrink-0 flex divide-x"
-            style={{ borderLeft: "1px solid var(--brand-card-border)", divideColor: "var(--brand-card-border)" }}
-          >
-            {agent.metrics.slice(0, 2).map((m, i) => (
-              <div
-                key={i}
-                className="flex flex-col justify-center px-7 py-7 text-center min-w-[120px]"
-                style={i > 0 ? { borderLeft: "1px solid var(--brand-card-border)" } : {}}
-              >
-                <p className="font-display text-3xl font-black tabular-nums leading-none mb-1.5" style={{ color: "var(--brand-primary)" }}>
-                  {m.value}
-                </p>
-                <p className="text-[0.6rem] leading-snug" style={{ color: "var(--brand-text-muted)", opacity: 0.5 }}>
-                  {m.label}
-                </p>
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-    </button>
-  );
-}
-
-// ── Pilot card ────────────────────────────────────────────────────────────────
-function PilotCard({ agent, onClick }: { agent: Agent; onClick: () => void }) {
-  return (
-    <button
-      onClick={onClick}
-      className="group w-full text-left rounded-2xl p-6 transition-all duration-200 hover:-translate-y-0.5"
-      style={{ background: "var(--brand-card-bg)", border: "1px solid var(--brand-card-border)" }}
-    >
-      <div className="flex items-start gap-4 mb-5">
-        <Avatar agent={agent} size={44} className="w-11 h-11 rounded-xl" />
-        <div className="flex-1 min-w-0 pt-0.5">
-          <div className="flex items-center gap-2 mb-1.5">
-            <StatusDot status="pilot" />
-            <span className="text-[0.6rem] font-bold tracking-[0.14em] uppercase" style={{ color: "#f59e0b" }}>In Pilot</span>
-          </div>
-          <h3 className="font-display text-base font-black leading-tight group-hover:text-[var(--brand-primary)] transition-colors duration-200" style={{ color: "var(--brand-text-heading)" }}>
-            {agent.name}
-          </h3>
+      {/* Top: avatar + status */}
+      <div className="flex items-start justify-between gap-3 mb-5">
+        <Avatar agent={agent} size={48} className="w-12 h-12 rounded-xl" />
+        <div className="flex items-center gap-1.5 pt-0.5">
+          <StatusDot status={agent.status} />
+          <span className="text-[0.6rem] font-bold tracking-[0.14em] uppercase" style={{ color: s.color }}>
+            {s.label}
+          </span>
         </div>
       </div>
 
-      <p className="text-xs leading-relaxed mb-5" style={{ color: "var(--brand-text-muted)", opacity: 0.6 }}>
+      {/* Identity */}
+      <h3
+        className="font-display text-lg font-black leading-tight mb-1 group-hover:text-[var(--brand-primary)] transition-colors duration-200"
+        style={{ color: "var(--brand-text-heading)" }}
+      >
+        {agent.name}
+      </h3>
+      <p className="text-xs mb-5 leading-snug" style={{ color: "var(--brand-text-muted)", opacity: 0.45 }}>
         {agent.function}
       </p>
 
-      {agent.metrics && agent.metrics.length > 0 && (
+      {/* Metrics */}
+      {agent.metrics && agent.metrics.length > 0 ? (
         <div className="flex items-center gap-5 pt-4" style={{ borderTop: "1px solid var(--brand-surface-border)" }}>
           {agent.metrics.slice(0, 2).map((m, i) => (
             <div key={i}>
-              <p className="font-display text-lg font-black tabular-nums leading-none mb-0.5" style={{ color: "var(--brand-primary)" }}>{m.value}</p>
-              <p className="text-[0.58rem]" style={{ color: "var(--brand-text-muted)", opacity: 0.45 }}>{m.label}</p>
+              <p className="font-display text-xl font-black tabular-nums leading-none mb-0.5" style={{ color: "var(--brand-primary)" }}>
+                {m.value}
+              </p>
+              <p className="text-[0.58rem] leading-snug" style={{ color: "var(--brand-text-muted)", opacity: 0.45 }}>
+                {m.label}
+              </p>
             </div>
           ))}
-          <div className="ml-auto">
-            <p className="text-[0.58rem] text-right" style={{ color: "var(--brand-text-muted)", opacity: 0.3 }}>{agent.goLive}</p>
-          </div>
+          <p className="ml-auto text-[0.58rem] shrink-0" style={{ color: "var(--brand-text-muted)", opacity: 0.3 }}>
+            {agent.goLive}
+          </p>
         </div>
+      ) : (
+        <p className="text-[0.6rem] pt-4" style={{ borderTop: "1px solid var(--brand-surface-border)", color: "var(--brand-text-muted)", opacity: 0.3 }}>
+          {agent.goLive}
+        </p>
       )}
-    </button>
-  );
-}
-
-// ── Planned row ───────────────────────────────────────────────────────────────
-function PlannedRow({ agent, onClick, last }: { agent: Agent; onClick: () => void; last: boolean }) {
-  return (
-    <button
-      onClick={onClick}
-      className="group w-full text-left flex items-center gap-4 px-6 py-4 transition-colors duration-150 hover:bg-[var(--brand-surface)]"
-      style={!last ? { borderBottom: "1px solid var(--brand-surface-border)" } : {}}
-    >
-      <StatusDot status="planned" />
-      <div className="flex-1 min-w-0">
-        <p className="text-sm font-bold leading-tight group-hover:text-[var(--brand-primary)] transition-colors duration-150" style={{ color: "var(--brand-text-heading)" }}>
-          {agent.name}
-        </p>
-        <p className="text-xs mt-0.5" style={{ color: "var(--brand-text-muted)", opacity: 0.4 }}>
-          {agent.function}
-        </p>
-      </div>
-      <p className="text-xs shrink-0" style={{ color: "var(--brand-text-muted)", opacity: 0.3 }}>{agent.goLive}</p>
-      <svg width="12" height="12" viewBox="0 0 14 14" fill="none" className="shrink-0 opacity-15 group-hover:opacity-40 transition-opacity" aria-hidden>
-        <path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" stroke="var(--brand-primary)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
     </button>
   );
 }
@@ -373,8 +309,8 @@ export default function AgentTrackerClient({ agents, milestones = [] }: { agents
         {live.length > 0 && (
           <div>
             <SectionLabel status="live" count={live.length} />
-            <div className="space-y-3">
-              {live.map(a => <LiveCard key={a.id} agent={a} onClick={() => setSelected(a)} />)}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {live.map(a => <AgentCard key={a.id} agent={a} onClick={() => setSelected(a)} />)}
             </div>
           </div>
         )}
@@ -399,8 +335,8 @@ export default function AgentTrackerClient({ agents, milestones = [] }: { agents
         {pilot.length > 0 && (
           <div>
             <SectionLabel status="pilot" count={pilot.length} />
-            <div className="grid sm:grid-cols-2 gap-4">
-              {pilot.map(a => <PilotCard key={a.id} agent={a} onClick={() => setSelected(a)} />)}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {pilot.map(a => <AgentCard key={a.id} agent={a} onClick={() => setSelected(a)} />)}
             </div>
           </div>
         )}
@@ -409,10 +345,8 @@ export default function AgentTrackerClient({ agents, milestones = [] }: { agents
         {planned.length > 0 && (
           <div>
             <SectionLabel status="planned" count={planned.length} />
-            <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid var(--brand-surface-border)" }}>
-              {planned.map((a, i) => (
-                <PlannedRow key={a.id} agent={a} onClick={() => setSelected(a)} last={i === planned.length - 1} />
-              ))}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {planned.map(a => <AgentCard key={a.id} agent={a} onClick={() => setSelected(a)} />)}
             </div>
           </div>
         )}
