@@ -223,6 +223,10 @@ export const ACCOUNT = {
     "account-team",
     "headless-360",
     "global-map",
+    "agents",
+    "strategy",
+    "roi-calculator",
+    "pulse",
   ] as string[],
 
   // ── Hero ───────────────────────────────────────────────────────────────────

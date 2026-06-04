@@ -20,6 +20,7 @@ const allNavLinks = [
   { href: "/pilot",          slug: "pilot",         label: "Pilot Plan" },
   { href: "/account-team",   slug: "account-team",  label: "Account Team" },
   { href: "/demo-library",   slug: "demo-library",  label: "Demo Library" },
+  { href: "/agents",         slug: "agents",         label: "Agents" },
   { href: "/pulse",          slug: "pulse",          label: "Account Pulse" },
   { href: "/roi-calculator", slug: "roi-calculator", label: "ROI Calculator" },
   { href: "/innovation",     slug: "innovation",     label: "Innovation" },
@@ -101,8 +102,8 @@ export default function Nav() {
           </button>
 
           {open && (
-            <div className="absolute right-0 top-[calc(100%+8px)] w-64 bg-[var(--brand-bg)] border border-[var(--brand-surface-border)] rounded-2xl shadow-2xl shadow-black/40 overflow-hidden">
-              <nav className="p-2">
+            <div className="absolute right-0 top-[calc(100%+8px)] w-64 bg-[var(--brand-bg)] border border-[var(--brand-surface-border)] rounded-2xl shadow-2xl shadow-black/40 overflow-hidden flex flex-col" style={{ maxHeight: "min(80vh, 560px)" }}>
+              <nav className="p-2 overflow-y-auto flex-1 overscroll-contain">
                 {navLinks.map(({ href, label }) => {
                   const active = href === "/" ? pathname === "/" : pathname === href;
                   return (
