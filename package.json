@@ -5,12 +5,13 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p ${PORT:-3000}",
     "lint": "next lint"
   },
   "dependencies": {
     "jose": "^6.2.3",
     "next": "14.2.35",
+    "react-simple-maps": "^3.0.0",
     "postmark": "^4.0.7",
     "react": "^18",
     "react-dom": "^18",

@@ -3,6 +3,51 @@
 // All site content is driven from this single source of truth.
 // ─────────────────────────────────────────────────────────────────────────────
 
+// ── Optional feature types ─────────────────────────────────────────────────
+
+export interface GlobalMapOU {
+  id: string;
+  label: string;
+  countries: string[];   // ISO alpha-3 codes
+  status: "live" | "in-progress";
+  agentforce?: boolean;
+  before?: string;       // State before your platform
+  current: string;       // Current state today
+  future?: string;       // Future state with Agentforce
+  futureHighlights?: string[];
+  zoom?: { coordinates: [number, number]; zoom: number };
+}
+
+export interface GlobalMapTimelineFrame {
+  year: number;
+  label: string;
+  caption?: string;
+  ouStatus: Record<string, "live" | "in-progress" | "none">;
+}
+
+export interface ROISlider {
+  label: string;
+  sublabel: string;
+  min: number;
+  max: number;
+  step: number;
+  default: number;
+  format: (v: number) => string;
+}
+
+export interface InnovationExperiment {
+  id: string;
+  status: "active" | "scoping" | "complete";
+  title: string;
+  function: string;
+  tagline: string;
+  description: string;
+  why: string;
+  signals: string[];
+  stage: string;
+  origin: string;
+}
+
 export type DemoCategory =
   | "agentforce" | "data" | "service" | "sales" | "platform"
   | "slack" | "tableau" | "analytics" | "watsonx";
@@ -141,6 +186,9 @@ export const ACCOUNT = {
   //   "pilot"          — Pilot plan and next steps
   //   "demo-library"   — Curated demo video library
   //   "account-team"   — Your Salesforce account team
+  //   "pulse"          — Events, announcements, and account updates (requires data/pulse.ts)
+  //   "roi-calculator" — Interactive ROI calculator (requires ACCOUNT.roi)
+  //   "innovation"     — Internal innovation showcase (requires ACCOUNT.innovation)
   //
   pages: [
     "act-1",
@@ -873,6 +921,139 @@ export const ACCOUNT = {
     orgUrl:            string;   // My Domain URL — e.g. https://yourorg.my.salesforce.com
     scrt2Url:          string;   // SCRT2 URL — e.g. https://yourorg.my.salesforce-scrt.com
     label:             string;   // Button label — e.g. "Ask Agentforce"
+  },
+
+  // ── ROI Calculator (optional) ─────────────────────────────────────────────
+  // Add "roi-calculator" to pages[] above to enable the page.
+  // Fully config-driven: define your sliders and a calculate() function that
+  // returns a total + breakdown array. Labels and numbers are account-specific.
+  roi: {
+    pageHeadline: "What does Agentforce\nactually cost you?",
+    pageSubhead: "Adjust the sliders to reflect your organization and see the estimated annual value.",
+    totalLabel: "Estimated Annual Value",
+    totalSublabel: "Based on your inputs — illustrative, not a commitment.",
+    disclaimer: "Estimates based on Agentforce benchmarks and industry data. For illustrative purposes only. Actual results vary by deployment scope, adoption, and organizational complexity.",
+    primarySlider: {
+      label: "TODO: Primary metric — e.g. 'Field Reps' or 'Key Account Managers'",
+      sublabel: "TODO: Sublabel — e.g. 'Active field reps across all territories'",
+      min: 10, max: 500, step: 5, default: 100,
+      format: (v: number) => v.toLocaleString(),
+    } as ROISlider,
+    secondarySlider: {
+      label: "TODO: Secondary metric — e.g. 'Hours per Review' or 'Prep Time'",
+      sublabel: "TODO: Sublabel",
+      min: 1, max: 20, step: 1, default: 8,
+      format: (v: number) => `${v} hrs`,
+    } as ROISlider,
+    tertiarySlider: {
+      label: "TODO: Tertiary metric — e.g. 'Monthly Service Interactions'",
+      sublabel: "TODO: Sublabel",
+      min: 100, max: 10000, step: 100, default: 2000,
+      format: (v: number) => v.toLocaleString(),
+    } as ROISlider,
+    // Return total (dollars) + up to 4 breakdown cards
+    calculate: (primary: number, secondary: number, tertiary: number): {
+      total: number;
+      breakdown: { label: string; value: string; sub?: string }[];
+    } => {
+      // TODO: Replace with account-specific formula
+      const timeSavings = primary * secondary * 4 * 85;
+      const automation = tertiary * 12 * 0.35 * 15;
+      const total = timeSavings + automation;
+      const fmt = (n: number) => n >= 1_000_000 ? `$${(n / 1_000_000).toFixed(1)}M` : `$${Math.round(n / 1000)}K`;
+      return {
+        total,
+        breakdown: [
+          { label: "Time Value", value: fmt(timeSavings), sub: `${(primary * secondary * 4).toLocaleString()} hours recovered/yr` },
+          { label: "Automation Savings", value: fmt(automation), sub: `${Math.round(tertiary * 12 * 0.35).toLocaleString()} interactions/yr` },
+          { label: "Prep Reduction", value: `${Math.round(((secondary - 0.33) / secondary) * 100)}%`, sub: `From ${secondary} hrs → ~20 min` },
+          { label: "Additional Capacity", value: `+${(primary * 2).toLocaleString()}`, sub: "Accounts each rep can actively manage" },
+        ],
+      };
+    },
+    assumptions: [
+      {
+        title: "TODO: Assumption group 1 — e.g. 'Rep Productivity'",
+        items: [
+          "TODO: Assumption 1 — e.g. '4 reviews per rep per year'",
+          "TODO: Assumption 2 — e.g. 'Agentforce reduces prep to ~20 minutes'",
+        ],
+      },
+      {
+        title: "TODO: Assumption group 2 — e.g. 'Service Automation'",
+        items: [
+          "TODO: Assumption 1 — e.g. '35% of interactions resolved autonomously'",
+          "TODO: Assumption 2 — e.g. '$15 fully-loaded cost per manual interaction'",
+        ],
+      },
+    ],
+  },
+
+  // ── Innovation / Experiments (optional) ──────────────────────────────────
+  // Add "innovation" to pages[] above to enable the page.
+  // Showcase internal innovation built on the Salesforce platform.
+  innovation: {
+    headline: "What&rsquo;s Being Built",
+    subhead: "TODO: One or two sentences — [Company] isn't just adopting Salesforce. It's building on top of it.",
+    closing: "TODO: Why internally-built tools on this foundation validate the investment thesis.",
+    stats: [
+      { value: "TODO", label: "active experiments" },
+      { value: "TODO", label: "platform" },
+    ],
+    experiments: [
+      {
+        id: "experiment-1",
+        status: "active" as const,
+        title: "TODO: Experiment Title",
+        function: "TODO: Business Function · Platform",
+        tagline: "TODO: Question this solves — ideally one punchy sentence.",
+        description: "TODO: What this tool does, what data it reads, what problem it eliminates.",
+        why: "TODO: Why this matters — what gap it closes, who it helps, what changes when it's live.",
+        signals: [
+          "TODO: Feature or capability 1",
+          "TODO: Feature or capability 2",
+          "TODO: Feature or capability 3",
+        ],
+        stage: "TODO: e.g. 'Internal experiment — active development'",
+        origin: "TODO: e.g. 'Built by the [Team] technology team'",
+      },
+    ] as InnovationExperiment[],
+  },
+
+  // ── Agent Simulator Teaser (optional) ─────────────────────────────────────
+  // Drop AgentSimTeaser into any page when you want to link to an external
+  // demo or simulator. Set to null to disable.
+  // mockMessages: array of chat messages to show in the phone mock UI.
+  agentSimulator: null as null | {
+    eyebrow:       string;
+    headline:      string;
+    headlineAccent?: string;
+    description:   string;
+    features?:     string[];
+    url:           string;
+    ctaLabel:      string;
+    ctaSublabel?:  string;
+    mockChannel?:  string;
+    mockChannelSub?: string;
+    mockMessages:  {
+      actor:   "user" | "agent";
+      name:    string;
+      text:    string;
+      time:    string;
+      done?:   boolean;
+      active?: boolean;
+    }[];
+  },
+
+  // ── Global Deployment Map (optional) ─────────────────────────────────────
+  // Drop GlobalMapClient into any page to show an animated rollout map.
+  // Set to null to disable. Each OU maps country ISO alpha-3 codes to a
+  // region. The timeline animates through deployment stages.
+  globalMap: null as null | {
+    ous:           GlobalMapOU[];
+    timeline:      GlobalMapTimelineFrame[];
+    markers?:      { coordinates: [number, number]; label?: string; fromIndex?: number }[];
+    defaultZoom?:  { coordinates: [number, number]; zoom: number };
   },
 
   // ── CTA (used in footer + act 3 close) ────────────────────────────────────

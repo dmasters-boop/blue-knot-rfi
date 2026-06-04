@@ -20,6 +20,9 @@ const allNavLinks = [
   { href: "/pilot",          slug: "pilot",         label: "Pilot Plan" },
   { href: "/account-team",   slug: "account-team",  label: "Account Team" },
   { href: "/demo-library",   slug: "demo-library",  label: "Demo Library" },
+  { href: "/pulse",          slug: "pulse",          label: "Account Pulse" },
+  { href: "/roi-calculator", slug: "roi-calculator", label: "ROI Calculator" },
+  { href: "/innovation",     slug: "innovation",     label: "Innovation" },
 ];
 
 const navLinks = allNavLinks.filter(

@@ -202,7 +202,9 @@ export default function AccountTeam({ members }: Props) {
               {/* Cards grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                 {groupMembers.map((member) => (
-                  <MemberCard key={member.name} member={member} />
+                  <div key={member.name} id={member.name.toLowerCase().replace(/\s+/g, "-")}>
+                    <MemberCard member={member} />
+                  </div>
                 ))}
               </div>
             </div>
