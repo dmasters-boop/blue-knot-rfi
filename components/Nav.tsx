@@ -103,6 +103,12 @@ export default function Nav() {
 
           {open && (
             <div className="absolute right-0 top-[calc(100%+8px)] w-64 bg-[var(--brand-bg)] border border-[var(--brand-surface-border)] rounded-2xl shadow-2xl shadow-black/40 overflow-hidden flex flex-col" style={{ maxHeight: "min(80vh, 560px)" }}>
+              {/* Scroll hint — fade + chevron at bottom */}
+              <div className="absolute bottom-0 left-0 right-0 h-14 pointer-events-none z-10 flex items-end justify-center pb-2 rounded-b-2xl" style={{ background: "linear-gradient(to bottom, transparent, var(--brand-bg))" }}>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+                  <path d="M4 6l4 4 4-4" stroke="var(--brand-primary)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
               <nav className="p-2 overflow-y-scroll flex-1 overscroll-contain nav-scroll">
                 {navLinks.map(({ href, label }) => {
                   const active = href === "/" ? pathname === "/" : pathname === href;
