@@ -22,19 +22,17 @@ export default function AgentTrackerPage() {
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to bottom, color-mix(in srgb, var(--brand-primary) 10%, var(--brand-bg)) 0%, var(--brand-bg) 60%)" }} />
-        <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1440 500" fill="none" preserveAspectRatio="xMidYMid slice" aria-hidden>
-          <circle cx="200" cy="400" r="350" fill="var(--brand-primary)" opacity="0.05"/>
-          <circle cx="1300" cy="100" r="250" fill="var(--brand-primary)" opacity="0.03"/>
-        </svg>
 
         <div className="relative max-w-6xl mx-auto px-6 pt-32 pb-16">
-          <div className="mb-6"><span className="eyebrow-pill">{hero.eyebrow}</span></div>
-          <h1 className="font-display font-black tracking-tight leading-[0.92] mb-6 text-5xl sm:text-6xl lg:text-7xl" style={{ color: "var(--brand-text-heading)", whiteSpace: "pre-line" }}>
-            {hero.headline}
-          </h1>
-          <p className="text-xl leading-relaxed max-w-2xl mb-10" style={{ color: "var(--brand-text-muted)" }}>
-            {hero.subheadline}
-          </p>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="mb-6"><span className="eyebrow-pill">{hero.eyebrow}</span></div>
+              <h1 className="font-display font-black tracking-tight leading-[0.92] mb-6 text-5xl sm:text-6xl lg:text-7xl" style={{ color: "var(--brand-text-heading)", whiteSpace: "pre-line" }}>
+                {hero.headline}
+              </h1>
+              <p className="text-xl leading-relaxed max-w-xl mb-10" style={{ color: "var(--brand-text-muted)" }}>
+                {hero.subheadline}
+              </p>
 
           {/* Status legend */}
           <div className="flex flex-wrap gap-5">
@@ -56,6 +54,20 @@ export default function AgentTrackerPage() {
                 <span className="text-sm font-semibold" style={{ color: "var(--brand-text-muted)" }}>{planned} Planned</span>
               </div>
             )}
+            </div>
+          </div>
+
+            {/* Floating hero image */}
+            <div className="hidden lg:flex items-center justify-center">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/agent-tracker-hero.png"
+                alt=""
+                aria-hidden
+                className="w-full max-w-lg object-contain drop-shadow-2xl"
+                style={{ filter: "drop-shadow(0 24px 48px rgba(0,0,0,0.4))" }}
+              />
+            </div>
           </div>
         </div>
       </section>
