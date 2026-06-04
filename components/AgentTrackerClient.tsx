@@ -232,9 +232,57 @@ function AgentModal({ agent, onClose }: { agent: Agent; onClose: () => void }) {
   );
 }
 
+// ── Platform Milestone card ───────────────────────────────────────────────────
+
+type Milestone = typeof ACCOUNT.agentTracker.platformMilestones[number];
+
+function MilestoneCard({ milestone }: { milestone: Milestone }) {
+  return (
+    <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/[0.06] p-6">
+      <div className="flex items-start gap-4">
+        <div className="shrink-0 w-10 h-10 rounded-xl bg-emerald-500/20 flex items-center justify-center">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden>
+            <path d="M3 10.5l5 5L17 4.5" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </div>
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-2 mb-1 flex-wrap">
+            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[0.58rem] font-bold tracking-widest uppercase border bg-emerald-500/20 text-emerald-300 border-emerald-500/30">
+              Live — {milestone.launched}
+            </span>
+            <span className="text-[0.65rem] text-white/30 font-medium">Platform Milestone</span>
+          </div>
+          <h3 className="font-display text-base font-black text-white mb-1">{milestone.name}</h3>
+          <p className="text-xs text-white/55 leading-relaxed mb-4">{milestone.description}</p>
+
+          <div className={`grid gap-3 mb-4 ${milestone.stats.length === 2 ? "grid-cols-2" : "grid-cols-3"}`}>
+            {milestone.stats.map((s, i) => (
+              <div key={i} className="bg-white/[0.04] rounded-xl border border-white/8 px-4 py-3">
+                <p className="font-display text-xl font-black text-white leading-none mb-1">{s.value}</p>
+                <p className="text-[0.65rem] text-white/45 leading-snug">{s.label}</p>
+              </div>
+            ))}
+          </div>
+
+          <ul className="space-y-2">
+            {milestone.highlights.map((h, i) => (
+              <li key={i} className="flex items-start gap-2.5 text-xs text-white/50 leading-relaxed">
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className="shrink-0 mt-0.5" aria-hidden>
+                  <path d="M2 5l2 2L8 2" stroke="#22c55e" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                {h}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ── Main export ───────────────────────────────────────────────────────────────
 
-export default function AgentTrackerClient({ agents }: { agents: Agent[] }) {
+export default function AgentTrackerClient({ agents, milestones = [] }: { agents: Agent[]; milestones?: Milestone[] }) {
   const [selected, setSelected] = useState<Agent | null>(null);
 
   useEffect(() => {
@@ -246,7 +294,8 @@ export default function AgentTrackerClient({ agents }: { agents: Agent[] }) {
   return (
     <>
       <section className="bg-transparent">
-        <div className="max-w-6xl mx-auto px-6 py-16">
+        <div className="max-w-6xl mx-auto px-6 pt-16 pb-4">
+          <p className="text-xs font-bold tracking-[0.18em] uppercase text-white/30 mb-6">Agentforce Deployments</p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
             {agents.map((agent) => (
               <AgentGridCard key={agent.id} agent={agent} onClick={() => setSelected(agent)} />
@@ -254,6 +303,19 @@ export default function AgentTrackerClient({ agents }: { agents: Agent[] }) {
           </div>
         </div>
       </section>
+
+      {milestones.length > 0 && (
+        <section className="bg-transparent">
+          <div className="max-w-6xl mx-auto px-6 py-8">
+            <p className="text-xs font-bold tracking-[0.18em] uppercase text-white/30 mb-4">Platform Milestones</p>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {milestones.map((m) => (
+                <MilestoneCard key={m.id} milestone={m} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {selected && createPortal(
         <AgentModal agent={selected} onClose={() => setSelected(null)} />,

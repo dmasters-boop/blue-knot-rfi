@@ -28,6 +28,7 @@ export interface TeamMember {
   description: string;
   image?: string;
   email?: string;
+  slack?: string;
 }
 
 export type AgentCategory =
@@ -786,6 +787,16 @@ export const ACCOUNT = {
   // metrics: shown as "Outcomes" for live/pilot, "Target Metrics" for planned
   agentTracker: {
     meta: { title: "Agent Tracker · Executive Briefing" },
+    // platformMilestones: optional — non-agent Salesforce deployments (dashboards, data products, etc.)
+    // Leave as empty array [] to hide the section.
+    platformMilestones: [] as {
+      id: string;
+      name: string;
+      launched: string;
+      description: string;
+      stats: { value: string; label: string }[];
+      highlights: string[];
+    }[],
     hero: {
       eyebrow: "Agentforce in Motion",
       headline: "TODO: e.g. '3 agents.\n1 live.\n2 in motion.'",

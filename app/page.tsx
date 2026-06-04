@@ -171,7 +171,7 @@ export default function HomePage() {
               { href: "/use-cases",     label: "Use Cases",      desc: "Specific workflows transformed" },
               { href: "/business-case", label: "Business Case",  desc: "The investment and the return" },
               { href: "/pilot",         label: "Pilot Plan",     desc: "90-day path to production" },
-            ].map((item, i) => (
+            ].filter(item => ACCOUNT.pages.includes(item.href.replace("/", ""))).map((item, i) => (
               <FadeIn key={item.href} delay={i * 40}>
                 <Link
                   href={item.href}

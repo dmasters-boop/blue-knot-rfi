@@ -9,7 +9,7 @@ import AgentTrackerClient from "@/components/AgentTrackerClient";
 export const metadata: Metadata = { title: ACCOUNT.agentTracker.meta.title };
 
 export default function AgentTrackerPage() {
-  const { hero, agents, successMetrics } = ACCOUNT.agentTracker;
+  const { hero, agents, successMetrics, platformMilestones } = ACCOUNT.agentTracker;
 
   const live    = agents.filter((a) => a.status === "live").length;
   const pilot   = agents.filter((a) => a.status === "pilot").length;
@@ -88,7 +88,7 @@ export default function AgentTrackerPage() {
         </section>
 
         {/* Agent grid — client component */}
-        <AgentTrackerClient agents={agents} />
+        <AgentTrackerClient agents={agents} milestones={platformMilestones} />
 
       </div>
 
