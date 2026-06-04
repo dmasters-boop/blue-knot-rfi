@@ -23,6 +23,7 @@ const allNavLinks = [
   { href: "/pulse",          slug: "pulse",          label: "Account Pulse" },
   { href: "/roi-calculator", slug: "roi-calculator", label: "ROI Calculator" },
   { href: "/innovation",     slug: "innovation",     label: "Innovation" },
+  { href: "/headless-360",   slug: "headless-360",   label: "Headless 360" },
 ];
 
 const navLinks = allNavLinks.filter(

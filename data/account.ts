@@ -35,6 +35,23 @@ export interface ROISlider {
   format: (v: number) => string;
 }
 
+export interface Headless360Pillar {
+  number: string;
+  eyebrow: string;
+  headline: string;
+  body: string;
+  detail: string;
+  capabilities: string[];
+  tag: string;
+}
+
+export interface Headless360Play {
+  category: string;
+  label: string;
+  description: string;
+  surface: string;
+}
+
 export interface InnovationExperiment {
   id: string;
   status: "active" | "scoping" | "complete";
@@ -189,6 +206,7 @@ export const ACCOUNT = {
   //   "pulse"          — Events, announcements, and account updates (requires data/pulse.ts)
   //   "roi-calculator" — Interactive ROI calculator (requires ACCOUNT.roi)
   //   "innovation"     — Internal innovation showcase (requires ACCOUNT.innovation)
+  //   "headless-360"   — Headless 360 platform architecture deep-dive (requires ACCOUNT.headless360)
   //
   pages: [
     "act-1",
@@ -921,6 +939,108 @@ export const ACCOUNT = {
     orgUrl:            string;   // My Domain URL — e.g. https://yourorg.my.salesforce.com
     scrt2Url:          string;   // SCRT2 URL — e.g. https://yourorg.my.salesforce-scrt.com
     label:             string;   // Button label — e.g. "Ask Agentforce"
+  },
+
+  // ── Headless 360 (optional) ───────────────────────────────────────────────
+  // Add "headless-360" to pages[] above to enable the page.
+  // Covers the Salesforce platform's headless architecture — any IDE, any UI
+  // framework, any surface — with account-specific context, stats, and plays.
+  headless360: {
+    tagline: "The surface changes. The platform doesn't.",
+    intro: "TODO: One or two sentences — [Company] can't force customers or employees to come to Salesforce. With Headless 360, Salesforce goes to them — any surface, any framework, any coding environment.",
+    heroImage: undefined as string | undefined,
+
+    problemHeadline: "TODO: What's the signal/surface challenge for this account?",
+    problemBody: "TODO: 2–3 sentences — what signals are being produced, why the right action doesn't happen automatically, and what Headless 360 unlocks.",
+    stats: [
+      { stat: "TODO", label: "TODO: Scale stat — e.g. users, signals, workflows" },
+      { stat: "TODO", label: "TODO: Data stat — e.g. records, years of data" },
+      { stat: "TODO", label: "TODO: Impact stat — e.g. what becomes an agent input" },
+    ],
+
+    pillars: [
+      {
+        number: "01",
+        eyebrow: "Build with any coding agent or IDE",
+        headline: "Move fast without rebuilding.",
+        body: "TODO: Why this matters for [Company]'s engineering teams — what they can now build in Cursor, Claude Code, or VS Code without proprietary Salesforce tooling.",
+        detail: "TODO: A specific agent or tool they could build in days, not months.",
+        capabilities: [
+          "60+ MCP tools — GA now",
+          "30+ Agentic Skills — GA now",
+          "Works in Cursor, Claude Code, VS Code",
+          "Full access to Salesforce metadata and business logic",
+          "Agentforce agent builder via any IDE",
+        ],
+        tag: "GA Now",
+      },
+      {
+        number: "02",
+        eyebrow: "Build with any UI framework",
+        headline: "Native experiences on [Company] surfaces.",
+        body: "TODO: What UI frameworks [Company] uses today and how Multi-Framework support lets them embed Salesforce-powered experiences without brittle API bridges.",
+        detail: "TODO: A specific dashboard or surface — React, Angular, mobile — that could run on Salesforce data with governance traveling with it.",
+        capabilities: [
+          "Multi-Framework support — GA Q3 2026",
+          "React, Angular, Vue, mobile native",
+          "Real CRM data behind real sharing rules",
+          "FLS and permission sets enforced at the API layer",
+          "No separate data synchronization required",
+        ],
+        tag: "GA Q3 2026",
+      },
+      {
+        number: "03",
+        eyebrow: "Deploy on any surface",
+        headline: "Meet employees and customers where they are.",
+        body: "TODO: What surfaces matter for [Company] — voice, mobile, Slack, Teams — and how the same agent logic deploys to all of them with the same governance.",
+        detail: "TODO: A specific scenario — a field worker's phone, a manager's Teams channel, a customer chat — where the agent works without rebuilding.",
+        capabilities: [
+          "Agent Script for Voice — GA now",
+          "Agentforce Mobile SDK — GA now",
+          "1-click Slack deploy — GA now",
+          "Agentforce Experience Layer (AXL) — Beta July 2026",
+          "Teams, ChatGPT plugin, and custom surface support",
+        ],
+        tag: "GA / Beta July 2026",
+      },
+    ] as Headless360Pillar[],
+
+    architectureImage: undefined as string | undefined,
+
+    playsEyebrow: "TODO: e.g. 'The [Company] Plays'",
+    playsHeadline: "TODO: e.g. 'Three agents. Three growth levers.'",
+    playsSubhead: "TODO: One sentence framing why these plays matter — tie them to declared priorities.",
+    plays: [
+      {
+        category: "TODO: Category — e.g. 'Sales Productivity'",
+        label: "TODO: Agent Name — e.g. 'Field Rep Voice Assistant'",
+        description: "TODO: What this agent does, what signal triggers it, what action it takes.",
+        surface: "TODO: Surfaces — e.g. 'Mobile · Slack · Voice'",
+      },
+      {
+        category: "TODO: Category",
+        label: "TODO: Agent Name",
+        description: "TODO: Description.",
+        surface: "TODO: Surfaces",
+      },
+      {
+        category: "TODO: Category",
+        label: "TODO: Agent Name",
+        description: "TODO: Description.",
+        surface: "TODO: Surfaces",
+      },
+    ] as Headless360Play[],
+
+    trustHeadline: "TODO: Why governance is non-negotiable for [Company].",
+    trustBody: "TODO: What PII or compliance obligations [Company] has — scale of users/data — and how the Einstein Trust Layer addresses them.",
+    trustClosing: "TODO: One sentence — regardless of surface, the compliance posture is constant.",
+
+    closingQuote: "TODO: The strategic takeaway — one punchy quote that captures why Headless 360 is a moat, not just a feature.",
+    closingBody: [
+      "TODO: Closing paragraph 1 — reframe the 'should we?' question as 'who controls the governance plane and how fast can you ship?'",
+      "TODO: Closing paragraph 2 — what Headless 360 gives [Company] specifically.",
+    ],
   },
 
   // ── ROI Calculator (optional) ─────────────────────────────────────────────
