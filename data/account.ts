@@ -1244,12 +1244,12 @@ export const ACCOUNT = {
   // Leave as null to disable. Fill in values from Salesforce Setup →
   // Messaging Settings → your Embedded Service Deployment → View → Get Code.
   // Also add this site's domain to Setup → CORS and Setup → Trusted URLs.
-  agentforce: null as null | {
-    orgId:             string;   // 18-char Salesforce org ID
-    deploymentDevName: string;   // Developer name of the Embedded Service Deployment
-    orgUrl:            string;   // My Domain URL — e.g. https://yourorg.my.salesforce.com
-    scrt2Url:          string;   // SCRT2 URL — e.g. https://yourorg.my.salesforce-scrt.com
-    label:             string;   // Button label — e.g. "Ask Agentforce"
+  agentforce: {
+    orgId:             "00Dak00000uY7mz",
+    deploymentDevName: "Briefing_Assistant",
+    orgUrl:            "https://storm-e5d7d2ad6434f4.my.site.com/ESWBriefingAssistant1780635663471",
+    scrt2Url:          "https://storm-e5d7d2ad6434f4.my.salesforce-scrt.com",
+    label:             "Ask Agentforce",
   },
 
   // ── Headless 360 (optional) ───────────────────────────────────────────────
