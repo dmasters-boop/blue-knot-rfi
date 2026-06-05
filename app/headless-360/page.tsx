@@ -26,55 +26,60 @@ export default function Headless360Page() {
 
       {/* Hero */}
       <section className="relative overflow-hidden border-b" style={{ borderColor: "var(--brand-surface-border)" }}>
-        {/* Looping background video */}
-        <div className="absolute inset-0 pointer-events-none" aria-hidden>
-          <video
-            src="/images/headlessloop.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover object-center opacity-30"
-          />
-          <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, color-mix(in srgb, var(--brand-bg) 55%, transparent) 0%, var(--brand-bg) 85%)" }} />
-          <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, color-mix(in srgb, var(--brand-primary) 15%, transparent) 0%, transparent 60%)" }} />
-        </div>
-        {cfg.heroImage && (
-          <div className="absolute inset-0 pointer-events-none" aria-hidden>
-            <Image src={cfg.heroImage} alt="" fill className="object-cover object-center opacity-20" priority aria-hidden />
-            <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, color-mix(in srgb, var(--brand-bg) 80%, transparent) 0%, var(--brand-bg) 100%)" }} />
-          </div>
-        )}
-        <div className="relative max-w-6xl mx-auto px-6 pt-24 pb-20">
-          <FadeIn>
-            <div className="mb-6"><span className="eyebrow-pill">Platform Architecture</span></div>
-            <h1 className="font-display text-5xl sm:text-7xl font-black tracking-tight leading-[0.88] mb-6 max-w-4xl" style={{ color: "var(--brand-text-heading)" }}>
-              Headless 360.
-            </h1>
-            <p className="text-xl sm:text-2xl font-semibold mb-4 max-w-2xl leading-snug" style={{ color: "var(--brand-primary)" }}>
-              {cfg.tagline}
-            </p>
-            <p className="text-lg leading-relaxed max-w-2xl" style={{ color: "var(--brand-text-muted)" }}>
-              {cfg.intro}
-            </p>
-          </FadeIn>
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(135deg, color-mix(in srgb, var(--brand-primary) 10%, transparent) 0%, transparent 60%)" }} />
 
-          <FadeIn delay={100}>
-            <div className="mt-12 flex flex-wrap items-center gap-3">
-              {["Any coding agent or IDE", "Any UI framework", "Any surface"].map((item, i) => (
-                <div key={item} className="flex items-center gap-3">
-                  <span className="inline-flex items-center px-4 py-2 rounded-full border font-bold text-sm" style={{ borderColor: "var(--brand-primary)", color: "var(--brand-primary)", background: "color-mix(in srgb, var(--brand-primary) 8%, transparent)" }}>
-                    {item}
+        <div className="relative max-w-6xl mx-auto px-6 pt-24 pb-20">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+            {/* Left: text */}
+            <div>
+              <FadeIn>
+                <div className="mb-6"><span className="eyebrow-pill">Platform Architecture</span></div>
+                <h1 className="font-display text-5xl sm:text-6xl font-black tracking-tight leading-[0.88] mb-6" style={{ color: "var(--brand-text-heading)" }}>
+                  Headless 360.
+                </h1>
+                <p className="text-xl font-semibold mb-4 leading-snug" style={{ color: "var(--brand-primary)" }}>
+                  {cfg.tagline}
+                </p>
+                <p className="text-lg leading-relaxed mb-10" style={{ color: "var(--brand-text-muted)" }}>
+                  {cfg.intro}
+                </p>
+              </FadeIn>
+
+              <FadeIn delay={100}>
+                <div className="flex flex-wrap items-center gap-3">
+                  {["Any coding agent or IDE", "Any UI framework", "Any surface"].map((item, i) => (
+                    <div key={item} className="flex items-center gap-3">
+                      <span className="inline-flex items-center px-4 py-2 rounded-full border font-bold text-sm" style={{ borderColor: "var(--brand-primary)", color: "var(--brand-primary)", background: "color-mix(in srgb, var(--brand-primary) 8%, transparent)" }}>
+                        {item}
+                      </span>
+                      {i < 2 && <span className="text-lg font-light" style={{ color: "var(--brand-text-muted)" }}>+</span>}
+                    </div>
+                  ))}
+                  <span className="text-lg font-light mx-1" style={{ color: "var(--brand-text-muted)" }}>=</span>
+                  <span className="inline-flex items-center px-4 py-2 rounded-full font-bold text-sm" style={{ background: "var(--brand-primary)", color: "var(--brand-text-on-primary)" }}>
+                    One platform. Any agent.
                   </span>
-                  {i < 2 && <span className="text-lg font-light" style={{ color: "var(--brand-text-muted)" }}>+</span>}
                 </div>
-              ))}
-              <span className="text-lg font-light mx-1" style={{ color: "var(--brand-text-muted)" }}>=</span>
-              <span className="inline-flex items-center px-4 py-2 rounded-full font-bold text-sm" style={{ background: "var(--brand-primary)", color: "var(--brand-text-on-primary)" }}>
-                One platform. Any agent.
-              </span>
+              </FadeIn>
             </div>
-          </FadeIn>
+
+            {/* Right: looping video */}
+            <FadeIn delay={80} className="hidden lg:block">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl" style={{ aspectRatio: "16/10", border: "1px solid var(--brand-surface-border)", boxShadow: "0 24px 64px rgba(0,0,0,0.5)" }}>
+                <video
+                  src="/images/headlessloop.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(135deg, color-mix(in srgb, var(--brand-primary) 10%, transparent) 0%, transparent 50%)" }} />
+              </div>
+            </FadeIn>
+
+          </div>
         </div>
       </section>
 
