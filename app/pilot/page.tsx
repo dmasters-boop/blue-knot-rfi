@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { ACCOUNT } from "@/data/account";
 import Nav from "@/components/Nav";
 import FadeIn from "@/components/FadeIn";
@@ -21,20 +20,6 @@ export default function PilotPage() {
         <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1440 400" fill="none" preserveAspectRatio="xMidYMid slice" aria-hidden>
           <circle cx="200" cy="300" r="250" fill="var(--brand-primary)" opacity="0.05"/>
         </svg>
-
-        {/* Agent robot — floats right, fades into bg */}
-        <div className="absolute right-0 bottom-0 w-72 sm:w-96 h-full pointer-events-none hidden sm:block" aria-hidden>
-          <div className="absolute inset-0 bg-gradient-to-l from-transparent to-[#0A0A0A] z-10" />
-          <div className="absolute bottom-0 right-8 z-0 opacity-25">
-            <Image
-              src="/images/img-agent-1.webp"
-              alt=""
-              width={320}
-              height={380}
-              className="object-contain object-bottom"
-            />
-          </div>
-        </div>
 
         <div className="relative z-10 max-w-6xl mx-auto px-6 pt-32 pb-20 w-full">
           <div className="hero-eyebrow mb-6">
@@ -61,7 +46,7 @@ export default function PilotPage() {
                     borderColor: i === 0 ? "var(--brand-primary)" : i === 1 ? "var(--brand-primary-dark)" : "color-mix(in srgb, var(--brand-primary-dark) 70%, black)",
                   }}
                 >
-                  <div className="text-[0.65rem] font-bold tracking-widest uppercase text-white/60 mb-1">{phase.phase} · {phase.weeks}</div>
+                  <div className="text-[0.65rem] font-bold tracking-widest uppercase text-white/60 mb-1">{phase.phase}</div>
                   <p className="font-display text-2xl font-black text-white mb-5">{phase.title}</p>
                   <ul className="space-y-3">
                     {phase.steps.map((step, j) => (
