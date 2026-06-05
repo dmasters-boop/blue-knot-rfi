@@ -164,6 +164,14 @@ export const ACCOUNT = {
     // Optional hero background image — full URL or /public path (e.g. "/images/hero.jpg")
     // If set, renders as full-bleed behind the hero with a brand-tinted dark overlay
     // If omitted, falls back to the default gradient treatment
+    //
+    // Included starter backgrounds (pick one that fits the account's industry):
+    //   "/images/hero-cpg.png"           — Consumer goods / retail
+    //   "/images/hero-finance.png"       — Financial services / insurance
+    //   "/images/hero-manufacturing.png" — Manufacturing / field operations
+    //   "/images/hero-healthcare.png"    — Healthcare / life sciences
+    //   "/images/hero-tech.png"          — Technology / SaaS
+    //   "/images/hero-energy.png"        — Energy / utilities
     heroImage: undefined as string | undefined,
 
     // Section header alignment — eyebrow + heading + subtext blocks across all pages
@@ -1003,6 +1011,20 @@ export const ACCOUNT = {
   // Live deployment dashboard — what's running, piloting, and planned.
   // status: "live" | "pilot" | "planned"
   // metrics: shown as "Outcomes" for live/pilot, "Target Metrics" for planned
+  //
+  // Included agent avatars (use as avatar: "/images/agent-avatar-N.png"):
+  //   agent-avatar-1.png through agent-avatar-10.png — AI-generated agent personas
+  //
+  // Included Astro assets (use in page heroes or as avatars):
+  //   /images/ASTRO_NoOutfit_WalkRight_SFS20_sRGB.png — Astro walking right
+  //   /images/astro-laptop.png     — Astro with laptop
+  //   /images/astro-pointing.png   — Astro pointing
+  //   /images/astro-celebrating.png — Astro celebrating
+  //   /images/astro-thinking.png   — Astro thinking
+  //   /images/astro-data.png       — Astro with data visualization
+  //   /images/astro-agent.png      — Astro as agent
+  //   /images/astro-mobile.png     — Astro on mobile
+  //   /images/astro-field.png      — Astro in field setting
   agentTracker: {
     meta: { title: "Agent Tracker · Executive Briefing" },
     // platformMilestones: optional — non-agent Salesforce deployments (dashboards, data products, etc.)
