@@ -64,8 +64,8 @@ export default function AgentforceChat() {
         .embeddedServiceHelpButton .helpButton .uiButton .helpButtonLabel .message {
           font-size: 0.8rem !important;
         }
-        /* Hide default button — we surface our own below */
-        .embeddedServiceHelpButton {
+        /* Hide default Salesforce button — we use our own branded one */
+        embeddedservice-chat-button {
           display: none !important;
         }
       `}</style>
@@ -73,10 +73,23 @@ export default function AgentforceChat() {
       {/* Branded floating button */}
       <button
         onClick={() => {
-          const btn = document.querySelector<HTMLElement>(
-            ".embeddedServiceHelpButton .helpButton .uiButton, .helpButton .uiButton"
-          );
-          btn?.click();
+          // New Messaging for In-App & Web uses embeddedservice_bootstrap directly
+          try {
+            const el = document.querySelector<HTMLElement>(
+              "embeddedservice-chat-button, .embeddedServiceHelpButton button, .helpButton .uiButton"
+            );
+            if (el) {
+              el.click();
+            } else {
+              // Fallback: dispatch the event the bootstrap listener expects
+              window.dispatchEvent(new CustomEvent("onEmbeddedMessagingReady"));
+              // Try finding the shadow DOM button
+              const host = document.querySelector<HTMLElement>("embeddedservice-chat-button");
+              host?.shadowRoot?.querySelector<HTMLElement>("button")?.click();
+            }
+          } catch (e) {
+            console.error("Agentforce button error:", e);
+          }
         }}
         aria-label={label}
         className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 px-5 py-3 rounded-full shadow-2xl text-white text-sm font-bold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(0,0,0,0.35)]"
