@@ -26,6 +26,19 @@ export default function Headless360Page() {
 
       {/* Hero */}
       <section className="relative overflow-hidden border-b" style={{ borderColor: "var(--brand-surface-border)" }}>
+        {/* Looping background video */}
+        <div className="absolute inset-0 pointer-events-none" aria-hidden>
+          <video
+            src="/images/headlessloop.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover object-center opacity-30"
+          />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, color-mix(in srgb, var(--brand-bg) 55%, transparent) 0%, var(--brand-bg) 85%)" }} />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, color-mix(in srgb, var(--brand-primary) 15%, transparent) 0%, transparent 60%)" }} />
+        </div>
         {cfg.heroImage && (
           <div className="absolute inset-0 pointer-events-none" aria-hidden>
             <Image src={cfg.heroImage} alt="" fill className="object-cover object-center opacity-20" priority aria-hidden />
