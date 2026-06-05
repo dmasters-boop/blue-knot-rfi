@@ -172,6 +172,17 @@ export const ACCOUNT = {
     //   "/images/hero-healthcare.png"    — Healthcare / life sciences
     //   "/images/hero-tech.png"          — Technology / SaaS
     //   "/images/hero-energy.png"        — Energy / utilities
+    //
+    // Included gate page backgrounds (set in gate/page.tsx gateImage):
+    //   "/images/gate-finance.png"       — Financial services / cityscape at dusk
+    //   "/images/gate-manufacturing.png" — Manufacturing / factory floor
+    //   "/images/gate-healthcare.png"    — Healthcare / hospital corridor
+    //   "/images/gate-tech.png"          — Technology / open-plan office
+    //   "/images/gate-energy.png"        — Energy / offshore platform at sunset
+    //
+    // Other assets:
+    //   "/images/astro-icon.png"         — Astro icon (dark blue, no background)
+    //   "/images/sparkles.jpg"           — Agentforce sparkles icon
     heroImage: undefined as string | undefined,
 
     // Section header alignment — eyebrow + heading + subtext blocks across all pages
