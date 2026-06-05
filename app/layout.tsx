@@ -61,6 +61,13 @@ export const metadata: Metadata = {
     siteName: `${ACCOUNT.company} Executive Briefing`,
     title: `${ACCOUNT.hero.headline.replace(/\n/g, " ")} · ${ACCOUNT.company}`,
     description: ACCOUNT.hero.subheadline,
+    images: [{ url: "/og-image", width: 1200, height: 630, alt: `${ACCOUNT.company} Executive Briefing` }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${ACCOUNT.hero.headline.replace(/\n/g, " ")} · ${ACCOUNT.company}`,
+    description: ACCOUNT.hero.subheadline,
+    images: ["/og-image"],
   },
 };
 
