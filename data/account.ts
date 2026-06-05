@@ -1246,8 +1246,8 @@ export const ACCOUNT = {
   // Also add this site's domain to Setup → CORS and Setup → Trusted URLs.
   agentforce: {
     orgId:             "00Dak00000uY7mz",
-    deploymentDevName: "Briefing_Assistant",
-    orgUrl:            "https://storm-e5d7d2ad6434f4.my.site.com/ESWBriefingAssistant1780635663471",
+    deploymentDevName: "Executive_Briefing_Agent",
+    orgUrl:            "https://storm-e5d7d2ad6434f4.my.site.com/ESWExecutiveBriefingAge1780674234989",
     scrt2Url:          "https://storm-e5d7d2ad6434f4.my.salesforce-scrt.com",
     label:             "Ask Agentforce",
   },
